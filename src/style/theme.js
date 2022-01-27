@@ -12,8 +12,13 @@ const color = {
   filterTag: '#E9F6D8',
 }
 
+const border = {
+  radius: '3px',
+}
+
 const theme = {
   color,
+  border,
 }
 
 export default theme
