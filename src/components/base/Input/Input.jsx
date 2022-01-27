@@ -21,6 +21,10 @@ const Input = forwardRef(
 Input.displayName = 'Input'
 
 Input.propTypes = {
+  ref: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]),
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   isBorderDark: PropTypes.bool,
