@@ -1,10 +1,14 @@
 import React from 'react'
+import { ThemeProvider } from '@emotion/react'
 import { GlobalStyle } from '@style/GlobalStyle'
+import theme from '@style/theme'
 
 const App = () => {
   return (
     <>
-      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+      </ThemeProvider>
     </>
   )
 }
