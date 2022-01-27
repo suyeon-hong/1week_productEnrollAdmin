@@ -15,9 +15,9 @@ const Box = ({ width, height, border, children, ...props }) => {
   )
 }
 
-Box.PropTypes = {
+Box.propTypes = {
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  hieght: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   border: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   children: PropTypes.node.isRequired,
 }
