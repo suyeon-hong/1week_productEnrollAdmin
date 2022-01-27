@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
 import { DatePicker, DateTimePicker } from 'react-rainbow-components'
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import * as S from './Style'
 
 const Calendar = ({ time }) => {
@@ -23,6 +24,14 @@ const Calendar = ({ time }) => {
       )}
     </S.DatePickerBlock>
   )
+}
+
+Calendar.propTypes = {
+  time: PropTypes.bool,
+}
+
+Calendar.defaultProps = {
+  time: undefined,
 }
 
 export default Calendar
