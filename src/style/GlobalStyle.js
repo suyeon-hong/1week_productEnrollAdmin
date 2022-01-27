@@ -28,6 +28,17 @@ const ResetCss = css`
     background-color: transparent;
     border: none;
   }
+
+  table,
+  th,
+  td {
+    border: 1px solid;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
 `
 
 export const GlobalStyle = () => <Global styles={ResetCss} />
