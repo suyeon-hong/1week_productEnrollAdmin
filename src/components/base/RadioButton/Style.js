@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import theme from '@style/theme'
 
 export const RadioWrapper = styled.div`
   width: ${({ width }) => `${width}px`};
@@ -6,4 +7,10 @@ export const RadioWrapper = styled.div`
   padding: 10px 20px;
   border: ${({ border }) => `1px solid ${border}`};
   border-radius: 4px;
+`
+export const InputItem = styled.input`
+  margin: 10px 5px;
+  &:checked {
+    background-color: #000000;
+  }
 `
