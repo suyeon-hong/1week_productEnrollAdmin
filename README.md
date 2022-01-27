@@ -15,7 +15,7 @@
 1. 상단 `Code` 버튼을 눌러 레포지토리를 클론 받습니다.
 
 ```
-$ git clone https://github.com/wanted-team2/1week_postProductAdmin.git
+$ git clone https://github.com/wanted-team2/1week_productEnrollAdmin.git
 ```
 
 2. 패키지를 설치합니다.
