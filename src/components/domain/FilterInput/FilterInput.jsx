@@ -3,7 +3,7 @@ import { Box, Button, Modal } from '@components/base'
 import { TagSearchModal } from '@components/domain'
 import { useModal } from '@hooks'
 
-const FilterInput = ({}) => {
+const FilterInput = ({ addTag, selectedTags }) => {
   const { isShowing, toggle } = useModal()
 
   return (
@@ -22,12 +22,15 @@ const FilterInput = ({}) => {
         </Button>
       </Box>
       <Modal isShowing={isShowing} close={toggle}>
-        <TagSearchModal />
+        <TagSearchModal addTag={addTag} selectedTags={selectedTags} />
       </Modal>
     </div>
   )
 }
 
-FilterInput.propTypes = {}
+FilterInput.propTypes = {
+  addTag: PropTypes.func,
+  selectedTags: PropTypes.array,
+}
 
 export default FilterInput
