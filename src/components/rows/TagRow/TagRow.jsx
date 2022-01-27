@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import * as S from './Style'
 import { FilterInput, TagList } from '@components/domain'
 import { useState } from 'react'
 
