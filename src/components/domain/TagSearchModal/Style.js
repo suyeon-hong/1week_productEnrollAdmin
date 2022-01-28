@@ -41,3 +41,14 @@ export const Input = styled.input`
   border: 1px solid black;
   border-radius: 3px;
 `
+
+export const TagItem = styled.li`
+  width: auto;
+  padding: 12px;
+  background: ${({ theme }) => theme.color.filterTag};
+  cursor: pointer;
+  &.selected::after {
+    content: 'X';
+    margin-left: 5px;
+  }
+`
