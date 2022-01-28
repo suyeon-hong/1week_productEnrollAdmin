@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { style } from '@utils/constants'
 
 export const TableWrapper = styled.table`
   width: 100%;
@@ -10,7 +9,7 @@ export const TableWrapper = styled.table`
   th,
   td,
   tr {
-    padding: ${style.BASE_TABLE_PADDING};
+    padding: ${({ theme }) => theme.table.padding};
   }
 
   th,
