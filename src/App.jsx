@@ -2,7 +2,7 @@ import React from 'react'
 import { ThemeProvider } from '@emotion/react'
 import { GlobalStyle } from '@style/GlobalStyle'
 import theme from '@style/theme'
-import ProductEnrollAdmin from '@pages/ProductEnrollAdmin'
+import { ProductEnrollAdmin } from '@pages'
 
 const App = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
-import { ItemDiliverySetting } from '@components/base'
-import { ItemBenefitSetting } from '@components/base'
-import { OtherSetting } from '@components/base'
+import { ItemDiliverySetting } from '@components/table'
+import { ItemBenefitSetting } from '@components/table'
+import { OtherSetting } from '@components/table'
 
 const ProductEnrollAdmin = () => {
   return (

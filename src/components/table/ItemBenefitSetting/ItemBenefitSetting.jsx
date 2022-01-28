@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Table } from '@components/base'
 import { TableBody } from '@components/base'
 import { Toggle } from '@components/base'
 
 const ItemBenefitSetting = () => {
+  const [isChecked, setIsChecked] = useState(true)
   const handleChange = (e) => {
-    console.log(`id: ${e.target.id}`)
+    setIsChecked(e.target.checked)
   }
   return (
     <div>

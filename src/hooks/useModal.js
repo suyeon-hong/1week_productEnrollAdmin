@@ -3,8 +3,13 @@ import { useState } from 'react'
 const useModal = (initShow = false) => {
   const [isShowing, setIsShowing] = useState(initShow)
 
-  const toggle = (e) => {
-    const target = e.target
+  const toggle = (eventOrBool) => {
+    if (typeof eventOrBool === 'boolean') {
+      setIsShowing(eventOrBool)
+      return
+    }
+
+    const target = eventOrBool.target
 
     if (target.closest('.close')) {
       setIsShowing(!isShowing)
