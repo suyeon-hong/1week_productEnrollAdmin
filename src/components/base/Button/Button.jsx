@@ -13,6 +13,7 @@ const Button = ({
   background,
   color,
   children,
+  onClick,
   ...props
 }) => {
   return (
@@ -20,10 +21,11 @@ const Button = ({
       width={width}
       height={height}
       border={border}
-      radius={radius}
+      radius={radius ? 1 : 0}
       background={background}
       color={color}
       style={{ ...props.style }}
+      onClick={onClick}
     >
       {children}
     </S.ButtonWrapper>
@@ -37,6 +39,7 @@ Button.propTypes = {
   radius: PropTypes.bool,
   background: PropTypes.string,
   color: PropTypes.string,
+  onClick: PropTypes.func,
 }
 
 Button.defaultProps = {
@@ -46,6 +49,7 @@ Button.defaultProps = {
   border: theme.color.purple,
   background: '#fff',
   color: 'inherit',
+  onClick: () => {},
 }
 
 export default Button
