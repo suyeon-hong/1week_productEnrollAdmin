@@ -28,7 +28,7 @@ const AlertModal = ({ isCancelButton, isValidate, children }) => {
                 color="#fff"
                 background={theme.color.borderDarker}
                 border="inherit"
-                onClick={() => setIsShowing(false)}
+                onClick={() => toggle(false)}
               >
                 취소
               </Button>
