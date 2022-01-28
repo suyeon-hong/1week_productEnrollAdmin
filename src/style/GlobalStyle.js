@@ -1,4 +1,6 @@
 import { Global, css } from '@emotion/react'
+import theme from '@style/theme'
+
 const ResetCss = css`
   * {
     box-sizing: border-box;
@@ -6,8 +8,10 @@ const ResetCss = css`
     padding: 0;
   }
 
-  html {
+  html,
+  body {
     font-size: 16px;
+    color: ${theme.color.primary};
   }
 
   ol,
@@ -23,6 +27,17 @@ const ResetCss = css`
   button {
     background-color: transparent;
     border: none;
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
   }
 `
 

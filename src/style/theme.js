@@ -1,6 +1,7 @@
 const color = {
   primary: '#070606',
   border: '#E3E3E2',
+  borderDarker: '#A2A0A3',
   red: '#DA7773',
   purple: '#342F6B',
   purpleDarker: '#2718B5',
