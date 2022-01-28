@@ -11,3 +11,6 @@ export const TableBodyHead = styled.th`
   font-weight: normal;
   text-align: left;
 `
+export const TableBodyContent = styled.td`
+  width: ${({ width }) => width && checkTypeOfCss(width)};
+`
