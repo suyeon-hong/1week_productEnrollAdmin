@@ -2,9 +2,10 @@ import PropTypes from 'prop-types'
 import theme from '@style/theme'
 import * as S from './Style'
 
-const Box = ({ width, height, border, children, ...props }) => {
+const Box = ({ index, width, height, border, children, ...props }) => {
   return (
     <S.BoxWrapper
+      data-index={index}
       width={width}
       height={height}
       border={border}
@@ -16,6 +17,7 @@ const Box = ({ width, height, border, children, ...props }) => {
 }
 
 Box.propTypes = {
+  index: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   border: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -23,6 +25,7 @@ Box.propTypes = {
 }
 
 Box.defaultProps = {
+  index: '',
   width: '100%',
   height: '100%',
   border: theme.color.border,
