@@ -1,34 +1,51 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useRef } from 'react'
 import { OptionContext } from '@contexts/OptionContext/OptionProvider'
-import { DELETE_OPTION_SET, DELETE_OPTION } from '@contexts/OptionContext/types'
-import { Box, Button, Input } from '@components/base'
+import {
+  DELETE_OPTION_SET,
+  DELETE_OPTION,
+  ADD_OPTION_INFO,
+  ADD_ADDITORY_OPTION,
+} from '@contexts/OptionContext/types'
+import { optionInfoKey } from '@contexts/OptionContext/reducer'
 import AddOptionRow from './AddOptionRow/AddOptionRow'
+import { Box, Button, Input } from '@components/base'
+import { debounce } from '@utils/functions'
 import theme from '@style/theme'
 import * as S from './Style'
 
-const OptionRow = ({ optionInfo, addOptions, optionsIndex }) => {
+const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
   const { options, dispatch } = useContext(OptionContext)
+  const addOptionInfoRef = useRef({})
 
-  // useEffect(() => {
-  //   console.log(optionInfo)
-  // }, [optionInfo])
-
-  // const { optionName, normalPrice, price, stock, isTax } = optionInfo
+  const { optionName, normalPrice, price, stock, isTax } = optionInfoKey
   const handleOptionDelete = (e, optionInfoIndex) => {
     const deletedOptionInfo = optionInfo.filter(
       (option) => option.index !== optionInfoIndex,
     )
 
-    console.log(deletedOptionInfo, 'deletedOptionInfo')
     dispatch({
       type: DELETE_OPTION,
       payload: { optionsIndex, deletedOptionInfo },
     })
   }
 
+  const callback = () =>
+    dispatch({
+      type: ADD_OPTION_INFO,
+      payload: addOptionInfoRef.current,
+    })
+
+  const handleInput = (e, optionInfoIndex) => {
+    addOptionInfoRef.current[e.target.name] = e.target.value
+    addOptionInfoRef.current.optionsIndex = optionsIndex
+    addOptionInfoRef.current.optionInfoIndex = optionInfoIndex
+
+    const debounceFn = debounce(callback, 500)
+    debounceFn() // FIXME: 잘 작동안됨
+  }
+
   useEffect(() => {
-    if (optionInfo.length === 0) {
-      console.log(optionsIndex)
+    if (optionInfo?.length === 0) {
       dispatch({
         type: DELETE_OPTION_SET,
         payload: optionsIndex,
@@ -60,38 +77,43 @@ const OptionRow = ({ optionInfo, addOptions, optionsIndex }) => {
         </S.Row>
         <S.Row>
           <Input
+            name={optionName}
             placeholder="옵션명을 입력해 주세요.(필수)"
             required
+            onChange={(e) => handleInput(e, optionInfoIndex)}
             // value={optionName}
           />
         </S.Row>
         <S.Row className="flexRow">
           <S.Inline>
             <Input
+              name={normalPrice}
               type="number"
               placeholder="상품 정상가(필수)"
               required
-              // value={normalPrice}
-            />{' '}
+              onChange={(e) => handleInput(e, optionInfoIndex)}
+            />
             원
           </S.Inline>
           <span aria-label="할인율">할인율 %</span>
           <S.Inline>
             <Input
+              name={price}
               type="number"
               placeholder="상품 판매가(필수)"
               required
-              // value={price}
-            />{' '}
+              onChange={(e) => handleInput(e, optionInfoIndex)}
+            />
             원
           </S.Inline>
           <S.Inline>
             <Input
+              name={stock}
               type="number"
               placeholder="재고(필수)"
               required
-              // value={stock}
-            />{' '}
+              onChange={(e) => handleInput(e, optionInfoIndex)}
+            />
             개
           </S.Inline>
           <select name="" id="">
@@ -99,7 +121,7 @@ const OptionRow = ({ optionInfo, addOptions, optionsIndex }) => {
             <option value="비과세">비과세</option>
           </select>
         </S.Row>
-        {/* <AddOptionRow /> */}
+        <AddOptionRow additoryOptions={additoryOptions} />
         <S.AddOptionBtn>➕ 추가 옵션 상품 추가</S.AddOptionBtn>
       </Box>
     )),

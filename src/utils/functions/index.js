@@ -4,3 +4,16 @@ export const checkTypeOfCss = (property) =>
 export const deepCopy = (value) => {
   return JSON.parse(JSON.stringify(value))
 }
+
+export const debounce = (callback, delay) => {
+  let timer = null
+
+  return (...args) => {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      callback(...args)
+    }, delay)
+  }
+}
