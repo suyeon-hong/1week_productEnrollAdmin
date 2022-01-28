@@ -5,6 +5,7 @@ import * as S from './Style'
 const Input = forwardRef(
   (
     {
+      required,
       type,
       value,
       width,
@@ -20,6 +21,7 @@ const Input = forwardRef(
     return (
       <S.InputWrapper
         ref={ref}
+        required={required}
         type={type}
         value={value}
         width={width}
@@ -41,6 +43,7 @@ Input.propTypes = {
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   ]),
+  required: PropTypes.bool,
   type: PropTypes.string,
   value: PropTypes.any,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -52,6 +55,7 @@ Input.propTypes = {
 }
 
 Input.defaultProps = {
+  required: false,
   type: 'text',
   width: '100%',
   height: '100%',
