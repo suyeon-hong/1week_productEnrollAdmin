@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import * as S from './Style'
 
 const Calendar = ({ time }) => {
-const [date, setDate] = useState(new Date('2019-10-25 18:44'))
+  const [date, setDate] = useState(new Date('2019-10-25 18:44'))
 
   return (
     <S.DatePickerBlock>
