@@ -16,7 +16,9 @@ const border = {
   radius: '3px',
 }
 const table = {
+  baseHeight: '50px',
   padding: '15px',
+  innerPadding: '10px',
 }
 
 const theme = {
