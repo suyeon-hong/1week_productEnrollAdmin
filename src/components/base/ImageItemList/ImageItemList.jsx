@@ -2,23 +2,19 @@ import PropTypes from 'prop-types'
 import * as S from './Style'
 
 const ImageItemList = ({ itemList, upload }) => {
-  const images = itemList.map((txt, index) => ({ id: index, title: txt }))
-
   const handleClick = (id) => {
-    const changeArray = []
-    const list = images.filter((image) => Object.values(image)[0] !== id)
-    list.map((t) => changeArray.push(Object.values(t)[1]))
+    const changeArray = itemList.filter((item, index) => index !== id)
     upload(changeArray)
   }
 
   return (
     <S.ImageItemListWrapper>
-      {images.map((image) => (
-        <S.ImageItem
-          key={Object.values(image)[0]}
-          onClick={() => handleClick(Object.values(image)[0])}
-        >
-          {Object.values(image)[1]}
+      {itemList.map((item, index) => (
+        <S.ImageItem key={index}>
+          {item}
+          <S.XButton type="button" onClick={() => handleClick(index)}>
+            ❎
+          </S.XButton>
         </S.ImageItem>
       ))}
     </S.ImageItemListWrapper>
