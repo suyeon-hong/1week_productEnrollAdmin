@@ -12,8 +12,17 @@ const color = {
   filterTag: '#E9F6D8',
 }
 
+const border = {
+  radius: '3px',
+}
+const table = {
+  padding: '15px',
+}
+
 const theme = {
   color,
+  border,
+  table,
 }
 
 export default theme
