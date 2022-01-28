@@ -2,11 +2,15 @@ import React from 'react'
 import { Table } from '@components/base'
 import { ImageContainer } from '@components/domain'
 
-const RecommendImageTable = () => {
+const RecommendImageTable = ({ check = false }) => {
   return (
-    <Table thead="구매자 추천 이미지">
-      <ImageContainer />
-    </Table>
+    <>
+      {check && (
+        <Table thead="구매자 추천 이미지">
+          <ImageContainer />
+        </Table>
+      )}
+    </>
   )
 }
 
