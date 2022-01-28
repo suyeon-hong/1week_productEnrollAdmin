@@ -5,7 +5,7 @@ import theme from '@style/theme'
 import * as S from './Style'
 
 const AlertModal = ({ isCancelButton, isValidate, children }) => {
-  const { isShowing, toggle, setIsShowing } = useModal(true)
+  const { isShowing, toggle } = useModal(true)
 
   return (
     !isValidate &&
