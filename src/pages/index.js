@@ -1,1 +1,1 @@
-export { default as ProductEnrollAdmin } from './ProductEnrollAdmin'
+export { default as ProductEnrollAdmin } from './ProductEnrollAdmin/ProductEnrollAdmin'

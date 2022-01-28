@@ -22,11 +22,9 @@ const CheckBox = ({ formData, width, height, ...props }) => {
     if (isChecked) {
       checkedItems.add(id)
       setCheckedItems(checkedItems)
-      box.style.backgroundColor = theme.color.purple //스타일 변경
     } else if (!isChecked && checkedItems.has(id)) {
       checkedItems.delete(id)
       setCheckedItems(checkedItems)
-      box.style.backgroundColor = '#F6CB44' //스타일 변경
     }
     return checkedItems
   }
@@ -56,10 +54,9 @@ CheckBox.PropTypes = {
 }
 
 CheckBox.defaultProps = {
-  formData: PropTypes.null,
+  formData: [{ index: 1, name: '카테고리명' }],
   width: '100%',
   height: '100%',
-  // color: theme.color.purple,
 }
 
 export default CheckBox

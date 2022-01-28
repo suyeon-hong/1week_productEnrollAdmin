@@ -1,14 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import theme from '@style/theme'
 import * as S from './Style'
-
-// @NOTE: Items 예시
-// const Items = [
-//   { index: 1, item: '제한 없음' },
-//   { index: 2, item: '미노출' },
-//   { index: 3, item: '노출 기간 설정' },
-// ]
 
 const RadioButton = ({ Items, width, height, color, ...props }) => {
   const [index, setIndex] = useState(1)
@@ -39,10 +31,9 @@ RadioButton.PropTypes = {
 }
 
 RadioButton.defaultProps = {
-  Items: PropTypes.null,
+  Items: [{ index: 1, item: '제한 없음' }],
   width: '100%',
   height: '100%',
-  // color: theme.color.purple,
 }
 
 export default RadioButton
