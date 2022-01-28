@@ -2,7 +2,7 @@ import React from 'react'
 import { Table } from '@components/base'
 import { ImageContainer } from '@components/domain'
 
-const RecommendImageTable = ({ check = false }) => {
+const RecommendImageTable = ({ check = true }) => {
   return (
     <>
       {check && (
