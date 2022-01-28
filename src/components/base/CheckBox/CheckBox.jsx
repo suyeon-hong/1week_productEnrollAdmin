@@ -1,45 +1,29 @@
-import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import theme from '@style/theme'
 import * as S from './Style'
 
-// const formData = [
-//   { index: 1, name: '카테고리명' },
-//   { index: 2, name: '카테고리명' },
-//   { index: 3, name: '카테고리명' },
-// ]
-
-const CheckBox = ({ formData, width, height, ...props }) => {
-  const [isChecked, setIsChecked] = useState(false)
-  const [checkedItems, setCheckedItems] = useState(new Set())
-
+const CheckBox = ({ categories, setCategories }) => {
   const checkHandler = ({ target }) => {
-    setIsChecked(!isChecked)
-    checkedItemHandler(target, target.value, target.checked)
-  }
+    const nextCategories = categories.map((category) =>
+      category.name === target.value
+        ? { ...category, checked: !category.checked }
+        : category,
+    )
 
-  const checkedItemHandler = (box, id, isChecked) => {
-    if (isChecked) {
-      checkedItems.add(id)
-      setCheckedItems(checkedItems)
-    } else if (!isChecked && checkedItems.has(id)) {
-      checkedItems.delete(id)
-      setCheckedItems(checkedItems)
-    }
-    return checkedItems
+    setCategories(nextCategories)
   }
 
   return (
     <>
-      {formData.map((item) => (
-        <S.CheckBoxWrapper>
-          <label key={item.id} className="innerBox">
+      {categories.map(({ name, checked }) => (
+        <S.CheckBoxWrapper key={name}>
+          <label className="innerBox">
             <input
               type="checkbox"
-              value={item.name}
-              onChange={(e) => checkHandler(e)}
+              value={name}
+              checked={checked}
+              onChange={checkHandler}
             />
-            <S.SpanItem>{item.name}</S.SpanItem>
+            <S.SpanItem>{name}</S.SpanItem>
           </label>
         </S.CheckBoxWrapper>
       ))}
@@ -47,16 +31,9 @@ const CheckBox = ({ formData, width, height, ...props }) => {
   )
 }
 
-CheckBox.PropTypes = {
-  formData: PropTypes.object,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  hieght: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-}
-
-CheckBox.defaultProps = {
-  formData: [{ index: 1, name: '카테고리명' }],
-  width: '100%',
-  height: '100%',
+CheckBox.propTypes = {
+  categories: PropTypes.array,
+  setCategories: PropTypes.func,
 }
 
 export default CheckBox
