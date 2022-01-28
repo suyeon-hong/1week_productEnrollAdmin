@@ -2,6 +2,7 @@ import { Input, Table, TableBody } from '../../base'
 import CategoryRow from '../../rows/CategoryRow/CategoryRow'
 import { TagRow } from '../../rows'
 import ImageContainer from '../../domain/ImageContainer/ImageContainer'
+import * as S from './Style'
 
 const ProductionInformation = ({}) => {
   return (
@@ -14,10 +15,13 @@ const ProductionInformation = ({}) => {
           <TagRow />
         </TableBody>
         <TableBody title={'상품명*'}>
-          <Input placeholder={'상품명을 입력해 주세요.'} width={250} />
-        </TableBody>
-        <TableBody title={'상품 코드*'}>
-          <div>상품 코드</div>
+          <S.Row>
+            <Input placeholder={'상품명을 입력해 주세요.'} width={250} />
+            <S.ProductionCode>
+              <S.Head>상품 코드</S.Head>
+              <S.Contents>{Date.now()}</S.Contents>
+            </S.ProductionCode>
+          </S.Row>
         </TableBody>
         <TableBody title={'상품 구성 소개 정보*'}>
           <Input placeholder={'상품 구성 소개 정보를 입력해 주세요.'} />
