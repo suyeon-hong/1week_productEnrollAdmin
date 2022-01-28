@@ -3,14 +3,14 @@ import * as S from './Style'
 
 const TagList = ({ tags }) => {
   return (
-    <>
+    <S.TagListWrapper>
       지정된 필터 태그
-      <S.TagListWrapper>
+      <S.TagList>
         {tags.map((tag) => (
-          <div key={tag}>{tag}</div>
+          <li key={tag}>{tag}</li>
         ))}
-      </S.TagListWrapper>
-    </>
+      </S.TagList>
+    </S.TagListWrapper>
   )
 }
 

@@ -9,15 +9,16 @@ const FilterInput = ({ addTag, selectedTags }) => {
   return (
     <div onClick={toggle}>
       <Box
-        width={500}
+        width={'100%'}
         style={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
+          padding: `5px 12px`,
         }}
       >
         <div>필터태그를 검색해 주세요.</div>
-        <Button width={150} height={25}>
+        <Button width={70} height={35}>
           검색
         </Button>
       </Box>
