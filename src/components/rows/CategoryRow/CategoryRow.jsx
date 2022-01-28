@@ -9,7 +9,7 @@ const CategoryRow = ({}) => {
     { name: '카테고리2', checked: false },
     { name: '카테고리3', checked: false },
     { name: '카테고리4', checked: false },
-    { name: '카테고리11115', checked: false },
+    { name: '카테고리5', checked: false },
     { name: '카테고리6', checked: false },
     { name: '카테고리7', checked: false },
     { name: '카테고리8', checked: false },
@@ -37,7 +37,7 @@ const CategoryRow = ({}) => {
             ({ name, checked }) =>
               checked && (
                 <li key={name} onClick={() => removeCategory(name)}>
-                  {name} X
+                  {name}
                 </li>
               ),
           )}

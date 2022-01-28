@@ -1,7 +1,7 @@
 import { Input, Table, TableBody } from '../../base'
-import CategoryRow from '../../rows/CategoryRow/CategoryRow'
-import { TagRow } from '../../rows'
-import ImageContainer from '../../domain/ImageContainer/ImageContainer'
+import { CategoryRow, TagRow } from '@components/rows'
+import { ImageContainer } from '@components/domain'
+
 import * as S from './Style'
 
 const ProductionInformation = ({}) => {

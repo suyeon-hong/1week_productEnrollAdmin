@@ -2,8 +2,8 @@ import PropTypes from 'prop-types'
 import * as S from './Style'
 import { Box } from '@components/base'
 import { useCallback, useEffect, useState } from 'react'
-import { debounceGenerator } from '../../../utils/functions'
-import useFetch from '../../../hooks/useFetch'
+import { debounceGenerator } from '@utils/functions'
+import useFetch from '@hooks/useFetch'
 
 const TagSearchModal = ({ setTags, selectedTags, removeTag }) => {
   const { tags } = useFetch('tags.json')
@@ -20,7 +20,7 @@ const TagSearchModal = ({ setTags, selectedTags, removeTag }) => {
       return
     }
     debounce(() => {
-      setFilteredTags(tags.filter((tag) => tag.includes(keyword)))
+      setFilteredTags(() => tags.filter((tag) => tag.includes(keyword)))
     })
   }, [tags, keyword])
 
