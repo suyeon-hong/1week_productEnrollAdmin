@@ -4,13 +4,21 @@ import { ADD_OPTION_IMAGE } from '@contexts/OptionContext/types'
 import { ImageUploadButton } from '@components/base'
 import * as S from './Style'
 
-const OptionImageContainer = ({ initialImageInfo, setOptions, index }) => {
+const OptionImageContainer = ({
+  initialImageInfo,
+  setOptions,
+  optionsIndex,
+}) => {
   const { _, dispatch } = useContext(OptionContext)
   const [imageInfo, setImageInfo] = useState({})
 
   const onChange = (newImageInfo) => {
-    setImageInfo({ newImageInfo })
-    dispatch({ type: ADD_OPTION_IMAGE, payload: { index, ...newImageInfo } })
+    setImageInfo(newImageInfo)
+
+    dispatch({
+      type: ADD_OPTION_IMAGE,
+      payload: { index: optionsIndex, ...newImageInfo },
+    })
   }
 
   return (

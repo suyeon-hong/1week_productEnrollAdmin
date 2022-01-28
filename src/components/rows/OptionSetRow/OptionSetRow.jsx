@@ -21,7 +21,7 @@ const OptionSetRow = () => {
   return (
     <S.OptionSetRowWrapper>
       {React.Children.toArray(
-        options.map(({ imageInfo, optionInfo, addOptions }, index) => (
+        options.map(({ imageInfo, optionInfo, additoryOptions }, index) => (
           <S.OptionSetRowContainer data-index={index}>
             <Button
               width={60}
@@ -39,7 +39,7 @@ const OptionSetRow = () => {
             />
             <OptionRow
               optionInfo={optionInfo}
-              addOptions={addOptions}
+              additoryOptions={additoryOptions}
               optionsIndex={index}
             />
           </S.OptionSetRowContainer>
