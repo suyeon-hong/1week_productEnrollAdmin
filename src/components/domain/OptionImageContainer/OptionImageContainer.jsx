@@ -1,26 +1,21 @@
-import { useState, useEffect, useReducer } from 'react'
+import { useState, useContext } from 'react'
+import { OptionContext } from '@contexts/OptionContext/OptionProvider'
+import { ADD_OPTION_IMAGE } from '@contexts/OptionContext/types'
 import { ImageUploadButton } from '@components/base'
 import * as S from './Style'
-import {
-  initialValue,
-  reducer,
-  ADD_OPTION_IMAGE,
-} from '../../../reducer/optionReducer'
 
 const OptionImageContainer = ({ initialImageInfo, setOptions, index }) => {
-  const [imageInfo, setImageInfo] = useState({ ...initialImageInfo })
-  const [options, dispatch] = useReducer(reducer, [])
-  useEffect(() => {
-    dispatch({ type: ADD_OPTION_IMAGE, payload: { ...imageInfo, index } })
-  }, [imageInfo])
+  const { _, dispatch } = useContext(OptionContext)
+  const [imageInfo, setImageInfo] = useState({})
 
-  useEffect(() => {
-    console.log(options, 'options')
-  }, [options])
+  const onChange = (newImageInfo) => {
+    setImageInfo({ newImageInfo })
+    dispatch({ type: ADD_OPTION_IMAGE, payload: { index, ...newImageInfo } })
+  }
 
   return (
     <S.OptionImageWrapper>
-      <ImageUploadButton isImage upload={setImageInfo} />
+      <ImageUploadButton isImage upload={onChange} />
       <S.ImageArea src={imageInfo?.src} alt={imageInfo?.name} />
     </S.OptionImageWrapper>
   )
