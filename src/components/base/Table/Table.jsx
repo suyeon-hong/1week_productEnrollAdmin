@@ -13,15 +13,15 @@ const Table = ({ thead, children }) => {
 
       {
         <tbody>
-          {React.Children.count(children) ? (
-            children
-          ) : (
-            <tr>
+          <tr>
+            {React.Children.count(children) ? (
+              <td>{children}</td>
+            ) : (
               <S.AlertText>
                 <span>옵션 세트를 추가하여 옵션을 구성해 주세요.</span>
               </S.AlertText>
-            </tr>
-          )}
+            )}
+          </tr>
         </tbody>
       }
     </S.TableWrapper>
