@@ -7,6 +7,7 @@ const Input = forwardRef(
     {
       required,
       type,
+      name,
       value,
       width,
       height,
@@ -23,6 +24,7 @@ const Input = forwardRef(
         ref={ref}
         required={required}
         type={type}
+        name={name}
         value={value}
         width={width}
         height={height}
@@ -45,6 +47,7 @@ Input.propTypes = {
   ]),
   required: PropTypes.bool,
   type: PropTypes.string,
+  name: PropTypes.string,
   value: PropTypes.any,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -57,6 +60,7 @@ Input.propTypes = {
 Input.defaultProps = {
   required: false,
   type: 'text',
+  name: '',
   width: '100%',
   height: '100%',
   isRadius: true,
