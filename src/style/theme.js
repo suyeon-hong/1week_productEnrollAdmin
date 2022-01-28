@@ -15,10 +15,14 @@ const color = {
 const border = {
   radius: '3px',
 }
+const table = {
+  padding: '15px',
+}
 
 const theme = {
   color,
   border,
+  table,
 }
 
 export default theme
