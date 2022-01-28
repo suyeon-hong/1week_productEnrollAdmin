@@ -3,19 +3,27 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import * as S from './Style'
 
-const Calendar = ({ time }) => {
-  const [date, setDate] = useState(new Date('2019-10-25 18:44'))
+const Calendar = ({ time, onChange }) => {
+  const [date, setDate] = useState(new Date())
 
+  const onChangeHandler = (value) => {
+    setDate(value)
+    onChange && onChange(value)
+  }
   return (
     <S.DatePickerBlock>
       {time ? (
         <DateTimePicker
           value={date}
-          onChange={(value) => setDate(value)}
+          onChange={(value) => onChangeHandler(value)}
           hour24
         />
       ) : (
-        <DatePicker value={date} onChange={(value) => setDate(value)} hour24 />
+        <DatePicker
+          value={date}
+          onChange={(value) => onChangeHandler(value)}
+          hour24
+        />
       )}
     </S.DatePickerBlock>
   )

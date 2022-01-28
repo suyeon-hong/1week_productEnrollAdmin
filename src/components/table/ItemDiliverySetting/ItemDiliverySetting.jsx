@@ -9,17 +9,32 @@ const ItemDiliverySetting = () => {
   const [customDelivery, setCustomDelivery] = useState(false)
   const [visitGet, setVisitGet] = useState(false)
   const [reserveDelivery, setReserveDelivery] = useState(true)
+  const [orderTime, setOrderTime] = useState(new Date())
+  const [expireTime, setExpireTime] = useState(new Date())
 
-  const onCustomDelevery = (e) => {
+  const onCustomDelevery = () => {
     setCustomDelivery((value) => !value)
   }
 
-  const onVisitorGet = (e) => {
+  const onVisitorGet = () => {
     setVisitGet((value) => !value)
   }
 
-  const onReserveDelivery = (e) => {
+  const onReserveDelivery = () => {
     setReserveDelivery((value) => !value)
+  }
+
+  const onOrderTime = (value) => {
+    setOrderTime(value.getTime())
+  }
+
+  const onExpireTime = (value) => {
+    setExpireTime(value.getTime())
+  }
+
+  const onAlert = (value) => {
+    value.getTime() <= expireTime &&
+      alert('주문시간 이후로 출고일을 지정해 주세요.')
   }
 
   return (
@@ -55,10 +70,13 @@ const ItemDiliverySetting = () => {
                 onChange={onReserveDelivery}
               />
               <S.CalendarWrapper>
-                주문 시간 {<Calendar time />} ~ {<Calendar time />}
+                주문 시간 {<Calendar time onChange={onOrderTime} />} ~
+                {<Calendar time onChange={onExpireTime} />}
               </S.CalendarWrapper>
               <S.CalendarWrapper>
-                새벽 배송 {<Calendar />} ~ {<Calendar />}
+                새벽 배송
+                {<Calendar onChange={onAlert} />} 일반배송
+                {<Calendar onChange={onAlert} />}
               </S.CalendarWrapper>
             </>
           }
