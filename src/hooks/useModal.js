@@ -21,7 +21,7 @@ const useModal = (initShow = false) => {
     setIsShowing(!isShowing)
   }
 
-  return { isShowing, toggle, setIsShowing }
+  return { isShowing, toggle }
 }
 
 export default useModal
