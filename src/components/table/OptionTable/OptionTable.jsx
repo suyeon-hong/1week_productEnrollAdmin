@@ -58,4 +58,4 @@ const OptionTable = () => {
   )
 }
 
-export default OptionTable
+export default React.memo(OptionTable)

@@ -49,4 +49,4 @@ const OptionSetRow = () => {
   )
 }
 
-export default OptionSetRow
+export default React.memo(OptionSetRow)

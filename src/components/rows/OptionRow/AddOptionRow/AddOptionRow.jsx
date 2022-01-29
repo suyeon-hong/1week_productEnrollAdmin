@@ -80,4 +80,4 @@ const AddOptionRow = ({ additoryOptions, optionsIndex, optionInfoIndex }) => {
   )
 }
 
-export default AddOptionRow
+export default React.memo(AddOptionRow)

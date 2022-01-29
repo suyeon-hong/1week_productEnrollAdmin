@@ -15,11 +15,12 @@ import theme from '@style/theme'
 import * as S from './Style'
 
 const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
+  const { optionName, normalPrice, price, stock, isVAT } = optionInfoKey
+
   const { options, dispatch } = useContext(OptionContext)
   const addOptionInfoRef = useRef({})
   const debounceFn = useCallback(debounceGenerator(800), [])
 
-  const { optionName, normalPrice, price, stock, isVAT } = optionInfoKey
   const handleOptionDelete = (e, optionInfoIndex) => {
     const deletedOptionInfo = optionInfo.filter(
       (option) => option.index !== optionInfoIndex,
@@ -31,13 +32,13 @@ const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
     })
   }
 
-  const callback = () =>
-    dispatch({
-      type: UPDATE_OPTION_INFO,
-      payload: addOptionInfoRef.current,
-    })
-
   const handleInput = (e, optionInfoIndex) => {
+    const callback = () =>
+      dispatch({
+        type: UPDATE_OPTION_INFO,
+        payload: addOptionInfoRef.current,
+      })
+
     const { normalPrice, price, isVAT, ...props } = addOptionInfoRef.current
     addOptionInfoRef.current[e.target.name] = e.target.value
     addOptionInfoRef.current.optionsIndex = optionsIndex
@@ -58,10 +59,6 @@ const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
       type: ADD_OPTION,
       payload: optionsIndex,
     })
-  }
-
-  const onChange = (e) => {
-    console.log(e.target.value)
   }
 
   useEffect(() => {
