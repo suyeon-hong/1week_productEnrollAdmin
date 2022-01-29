@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import * as S from './Style'
 
 const RadioButton = ({
   items,
-  startNum,
-  unexposed = false,
   name,
   width,
   height,
   color,
+  selected,
+  setSelected,
   ...props
 }) => {
-  const [index, setIndex] = useState(startNum)
-
-  useEffect(() => {
-    if (unexposed === true) {
-      setIndex(startNum + 1)
-    }
-  }, [unexposed])
-
   return (
     <S.RadioWrapper>
       {items.map((item) => (
@@ -29,8 +21,8 @@ const RadioButton = ({
             type="radio"
             name={name}
             value={item.item}
-            checked={index === item.index}
-            onChange={(e) => setIndex(+e.currentTarget.id)}
+            checked={selected === item.index}
+            onChange={(e) => setSelected(+e.currentTarget.id)}
           />
           <label htmlFor={item.index}>{item.item}</label>
         </div>

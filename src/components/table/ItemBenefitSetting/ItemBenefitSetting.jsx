@@ -1,12 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Table } from '@components/base'
 import { TableBody } from '@components/base'
 import { Toggle } from '@components/base'
+import {
+  useTableDispatch,
+  useTableState,
+} from '../../../contexts/TableContext/TableProvider'
+import { CHANGE_PRODUCTION_BENEFIT } from '../../../contexts/TableContext/types'
 
 const ItemBenefitSetting = () => {
-  const [isChecked, setIsChecked] = useState(true)
-  const handleChange = (e) => {
-    setIsChecked(e.target.checked)
+  const { productionBenefit } = useTableState()
+  const dispatch = useTableDispatch()
+  const handleChange = () => {
+    dispatch({
+      type: CHANGE_PRODUCTION_BENEFIT,
+      payload: !productionBenefit,
+    })
   }
   return (
     <div>
@@ -14,7 +23,9 @@ const ItemBenefitSetting = () => {
         <TableBody
           width="90%"
           title="마일리지 적립"
-          children={<Toggle isToggle={true} onChange={handleChange} />}
+          children={
+            <Toggle isToggle={productionBenefit} onChange={handleChange} />
+          }
         ></TableBody>
       </Table>
     </div>

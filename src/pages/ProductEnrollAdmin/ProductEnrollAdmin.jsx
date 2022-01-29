@@ -1,18 +1,27 @@
 import React from 'react'
-import { ItemDiliverySetting } from '@components/table'
-import { ItemBenefitSetting } from '@components/table'
-import { OtherSetting } from '@components/table'
-import { OptionTable } from '@components/table'
-import { ProductImageTable } from '@components/table'
-import { RecommendImageTable } from '@components/table'
-import { ProductionInformation } from '@components/table'
-import { SetPeriodTable } from '@components/table'
-import { Button } from '@components/base'
-import { Gnb } from '@components/base'
 import * as S from './style'
 import theme from '../../style/theme'
 
+import {
+  ItemBenefitSetting,
+  OtherSetting,
+  OptionTable,
+  ProductImageTable,
+  ProductionInformation,
+  SetPeriodTable,
+  RecommendImageTable,
+  ItemDeliverySetting,
+  ItemInformationTable,
+} from '@components/table'
+import { Gnb, Button } from '@components/base'
+import { useTableState } from '../../contexts/TableContext/TableProvider'
+
 const ProductEnrollAdmin = () => {
+  const tableState = useTableState()
+  const handleClick = () => {
+    console.log(tableState)
+  }
+
   return (
     <>
       <S.Logo>Sir.LOIN</S.Logo>
@@ -29,6 +38,7 @@ const ProductEnrollAdmin = () => {
               style={{
                 transform: 'translateX(70vw)',
               }}
+              onClick={handleClick}
             >
               저장하기
             </Button>
@@ -39,7 +49,8 @@ const ProductEnrollAdmin = () => {
             <OptionTable />
             <ProductImageTable />
             <RecommendImageTable />
-            <ItemDiliverySetting />
+            <ItemDeliverySetting />
+            <ItemInformationTable />
             <ItemBenefitSetting />
             <OtherSetting />
           </S.Form>

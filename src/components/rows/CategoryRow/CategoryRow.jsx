@@ -1,20 +1,16 @@
 import * as S from './Style'
 import { Box } from '../../base'
 import CheckBox from '../../base/CheckBox/CheckBox'
-import { useState } from 'react'
+import {
+  useTableDispatch,
+  useTableState,
+} from '../../../contexts/TableContext/TableProvider'
+import { CHANGE_PRODUCTION_INFORMATION } from '../../../contexts/TableContext/types'
 
 const CategoryRow = ({}) => {
-  const [categories, setCategories] = useState([
-    { name: '카테고리1', checked: false },
-    { name: '카테고리2', checked: false },
-    { name: '카테고리3', checked: false },
-    { name: '카테고리4', checked: false },
-    { name: '카테고리5', checked: false },
-    { name: '카테고리6', checked: false },
-    { name: '카테고리7', checked: false },
-    { name: '카테고리8', checked: false },
-    { name: '카테고리9', checked: false },
-  ])
+  const { productionInformation } = useTableState()
+  const { categories } = productionInformation
+  const dispatch = useTableDispatch()
 
   const removeCategory = (name) => {
     const nextCategories = categories.map((category) =>
@@ -23,13 +19,16 @@ const CategoryRow = ({}) => {
         : { ...category, checked: !category.checked },
     )
 
-    setCategories(nextCategories)
+    dispatch({
+      type: CHANGE_PRODUCTION_INFORMATION,
+      payload: { categories: nextCategories },
+    })
   }
 
   return (
     <S.CategoryRowWrapper>
       <Box width={350} height={300}>
-        <CheckBox categories={categories} setCategories={setCategories} />
+        <CheckBox categories={categories} dispatch={dispatch} />
       </Box>
       <Box width={200} height={300}>
         <S.SelectedCategories>

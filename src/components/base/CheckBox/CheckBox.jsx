@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 import * as S from './Style'
+import { CHANGE_PRODUCTION_INFORMATION } from '../../../contexts/TableContext/types'
 
-const CheckBox = ({ categories, setCategories }) => {
+const CheckBox = ({ categories, dispatch }) => {
   const checkHandler = ({ target }) => {
     const nextCategories = categories.map((category) =>
       category.name === target.value
@@ -9,7 +10,10 @@ const CheckBox = ({ categories, setCategories }) => {
         : category,
     )
 
-    setCategories(nextCategories)
+    dispatch({
+      type: CHANGE_PRODUCTION_INFORMATION,
+      payload: { categories: nextCategories },
+    })
   }
 
   return (

@@ -5,22 +5,36 @@ import { Toggle } from '@components/base'
 import { Calendar } from '@components/base'
 import { AlertModal } from '@components/domain'
 import * as S from './Style.js'
+import {
+  useTableDispatch,
+  useTableState,
+} from '../../../contexts/TableContext/TableProvider'
+import { CHANGE_DELIVERY_SETTING } from '../../../contexts/TableContext/types'
 
-const ItemDiliverySetting = () => {
-  const [customDelivery, setCustomDelivery] = useState(false)
-  const [visitGet, setVisitGet] = useState(false)
+const ItemDeliverySetting = () => {
   const [reserveDelivery, setReserveDelivery] = useState(true)
   const [diliveryStartTime, setDiliveryStartTime] = useState(new Date())
   const [diliveryExpiredTime, setDiliveryExpiredTime] = useState(new Date())
   const [isValidTime, setIsVaildTime] = useState(true)
   const [isValidDate, setIsVaildDate] = useState(true)
 
-  const onCustomDelevery = () => {
-    setCustomDelivery((value) => !value)
-  }
+  const { deliverySetting } = useTableState()
+  const dispatch = useTableDispatch()
+  const { isSetDeliveryDate, isVisit } = deliverySetting
 
-  const onVisitorGet = () => {
-    setVisitGet((value) => !value)
+  const handleChange = (e) => {
+    const { name } = e.target
+    if (name === 'isSetDeliveryDate') {
+      dispatch({
+        type: CHANGE_DELIVERY_SETTING,
+        payload: { isSetDeliveryDate: !isSetDeliveryDate },
+      })
+      return
+    }
+    dispatch({
+      type: CHANGE_DELIVERY_SETTING,
+      payload: { isVisit: !isVisit },
+    })
   }
 
   const onReserveDelivery = () => {
@@ -62,9 +76,10 @@ const ItemDiliverySetting = () => {
           title="사용자 배송일 출발일 지정"
           children={
             <Toggle
-              isToggle={customDelivery}
-              onChange={onCustomDelevery}
+              isToggle={isSetDeliveryDate}
+              onChange={handleChange}
               disabled={reserveDelivery}
+              name={'isSetDeliveryDate'}
             />
           }
         />
@@ -72,9 +87,10 @@ const ItemDiliverySetting = () => {
           title="방문 수령"
           children={
             <Toggle
-              isToggle={visitGet}
-              onChange={onVisitorGet}
+              isToggle={isVisit}
+              onChange={handleChange}
               disabled={reserveDelivery}
+              name={'isVisit'}
             />
           }
         />
@@ -84,7 +100,7 @@ const ItemDiliverySetting = () => {
             <>
               <Toggle
                 isToggle={reserveDelivery}
-                disabled={customDelivery || visitGet}
+                disabled={isSetDeliveryDate || isVisit}
                 onChange={onReserveDelivery}
               />
               <S.CalendarWrapper>
@@ -116,4 +132,4 @@ const ItemDiliverySetting = () => {
   )
 }
 
-export default ItemDiliverySetting
+export default ItemDeliverySetting

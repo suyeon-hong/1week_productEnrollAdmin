@@ -1,12 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Table } from '@components/base'
 import { TableBody } from '@components/base'
 import { Toggle } from '@components/base'
+import {
+  useTableDispatch,
+  useTableState,
+} from '../../../contexts/TableContext/TableProvider'
+import { CHANGE_OTHER_SETTING } from '../../../contexts/TableContext/types'
 
 const OtherSetting = () => {
-  const [isChecked, setIsChecked] = useState(true)
-  const handleChange = (e) => {
-    setIsChecked(e.target.checked)
+  const { otherSetting } = useTableState()
+  const dispatch = useTableDispatch()
+  const handleChange = () => {
+    dispatch({
+      type: CHANGE_OTHER_SETTING,
+      payload: !otherSetting,
+    })
   }
   return (
     <div>
@@ -14,7 +23,7 @@ const OtherSetting = () => {
         <TableBody
           width="90%"
           title="감사카드 제공"
-          children={<Toggle onChange={handleChange} />}
+          children={<Toggle isToggle={otherSetting} onChange={handleChange} />}
         ></TableBody>
       </Table>
     </div>
