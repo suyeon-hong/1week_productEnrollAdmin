@@ -2,7 +2,7 @@
 
 ## 🚀 정보
 
-- [배포주소 바로가기]()
+- [배포주소 바로가기](https://goalisemployment.s3.ap-northeast-2.amazonaws.com/index.html)
 - [노션 바로가기](https://sleepy-oxygen-343.notion.site/41970b5fee2d45aebd7b01de061039eb)
 
 ## 🧐 프로젝트 빌드 및 실행 방법
@@ -86,7 +86,9 @@ $ yarn start
 - ### 유제호
 
   - `상품 기본 정보 테이블()` 구현
-  - 배포
+  - 전반적인 전역 상태관리
+  - 태그 검색시 디바운스 적용
+  - aws S3 배포
 
 - ### 고병표
 
