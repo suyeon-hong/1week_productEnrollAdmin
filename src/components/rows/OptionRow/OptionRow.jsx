@@ -1,4 +1,5 @@
 import React, { useEffect, useContext, useRef, useCallback } from 'react'
+import PropTypes from 'prop-types'
 import { OptionContext } from '@contexts/OptionContext/OptionProvider'
 import {
   DELETE_OPTION_SET,
@@ -17,7 +18,7 @@ import * as S from './Style'
 const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
   const { optionName, normalPrice, price, stock, isVAT } = optionInfoKey
 
-  const { options, dispatch } = useContext(OptionContext)
+  const { _, dispatch } = useContext(OptionContext)
   const addOptionInfoRef = useRef({})
   const debounceFn = useCallback(debounceGenerator(800), [])
 
@@ -167,6 +168,18 @@ const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
       </Button>
     </>
   )
+}
+
+OptionRow.PropTypes = {
+  optionInfo: PropTypes.array,
+  additoryOptions: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  optionsIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+}
+
+OptionRow.PropTypes = {
+  optionInfo: [],
+  additoryOptions: [],
+  optionsIndex: 0,
 }
 
 export default React.memo(OptionRow)
