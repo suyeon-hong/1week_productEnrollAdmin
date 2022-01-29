@@ -31,11 +31,12 @@ const Calendar = ({ time, handleTime }) => {
 }
 
 Calendar.propTypes = {
-  time: PropTypes.bool,
+  time: PropTypes.object,
+  handleTime: PropTypes.func.isRequired,
 }
 
 Calendar.defaultProps = {
-  time: undefined,
+  time: null,
 }
 
 export default Calendar
