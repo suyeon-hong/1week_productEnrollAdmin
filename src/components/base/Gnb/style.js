@@ -19,9 +19,12 @@ export const Menu = styled.li`
   cursor: pointer;
 `
 
-export const InnerMenu = styled(Menu)`
-  border-bottom: none;
+export const InnerMenu = styled.p`
+  width: 110%;
+  padding: ${({ theme }) => theme.table.padding};
   background: ${({ theme }) => theme.color.menuBackground};
+  transform: translate(-10px, 10px);
+  cursor: pointer;
 `
 export const ActiveMenu = styled(InnerMenu)`
   color: ${({ theme }) => theme.color.purpleDarker};

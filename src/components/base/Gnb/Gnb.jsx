@@ -29,6 +29,10 @@ const Gnb = () => {
         return (
           <S.Menu key={name.title} onClick={onClick} value={name.title}>
             {name.title}
+            {name.list &&
+              name.list.map((li) => {
+                return <S.InnerMenu>{li}</S.InnerMenu>
+              })}
           </S.Menu>
         )
       })}
