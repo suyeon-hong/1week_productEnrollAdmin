@@ -29,20 +29,7 @@ const OptionTable = () => {
         >
           + 옵션 세트 추가
         </Button>
-        <Button
-          width={130}
-          height={theme.table.baseHeight}
-          border={theme.color.red}
-          color={theme.color.red}
-          style={{
-            position: 'relative',
-            left: '88%',
-            marginBottom: 15,
-          }}
-          onClick={AddOptionSet}
-        >
-          삭제
-        </Button>
+
         {options?.length > 0 ? (
           <OptionSetRow />
         ) : (
