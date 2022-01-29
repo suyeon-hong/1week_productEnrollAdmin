@@ -5,6 +5,7 @@ import {
   CHANGE_PRODUCTION_BENEFIT,
   CHANGE_PRODUCTION_IMAGES,
   CHANGE_PRODUCTION_INFORMATION,
+  CHANGE_RECOMMEND_IMAGES,
 } from './types'
 
 export const initialValue = {
@@ -69,6 +70,12 @@ export const reducer = (state, { type, payload }) => {
       return {
         ...state,
         productionImages: { ...state.productionImages, ...payload },
+      }
+    }
+    case CHANGE_RECOMMEND_IMAGES: {
+      return {
+        ...state,
+        recommendImages: { ...state.recommendImages, ...payload },
       }
     }
     case CHANGE_PRODUCTION_BENEFIT: {
