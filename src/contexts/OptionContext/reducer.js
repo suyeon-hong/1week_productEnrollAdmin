@@ -147,7 +147,6 @@ export const reducer = (state, { type, payload }) => {
       const newState = deepCopy(state)
       const additoryOptionsArrayElement =
         newState[+optionsIndex].additoryOptions[optionInfoIndex]
-      console.log(currentIndex)
       const deleteAdditoryOptionsArrayElement =
         additoryOptionsArrayElement.filter(
           (element) => element.index !== currentIndex,
