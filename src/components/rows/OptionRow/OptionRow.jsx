@@ -3,7 +3,7 @@ import { OptionContext } from '@contexts/OptionContext/OptionProvider'
 import {
   DELETE_OPTION_SET,
   DELETE_OPTION,
-  ADD_OPTION_INFO,
+  UPDATE_OPTION_INFO,
   ADD_ADDITORY_OPTION,
 } from '@contexts/OptionContext/types'
 import { optionInfoKey } from '@contexts/OptionContext/reducer'
@@ -31,7 +31,7 @@ const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
 
   const callback = () =>
     dispatch({
-      type: ADD_OPTION_INFO,
+      type: UPDATE_OPTION_INFO,
       payload: addOptionInfoRef.current,
     })
 
@@ -44,7 +44,15 @@ const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
     debounceFn() // FIXME: 잘 작동안됨
   }
 
+  const handleaAddAditoryOptions = (e, optionInfoIndex) => {
+    dispatch({
+      type: ADD_ADDITORY_OPTION,
+      payload: { optionsIndex, optionInfoIndex },
+    })
+  }
+
   useEffect(() => {
+    // @NOTE: 각 옵션 세트의 옵션이 없을 경우 옵션 세트 삭제
     if (optionInfo?.length === 0) {
       dispatch({
         type: DELETE_OPTION_SET,
@@ -81,7 +89,6 @@ const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
             placeholder="옵션명을 입력해 주세요.(필수)"
             required
             onChange={(e) => handleInput(e, optionInfoIndex)}
-            // value={optionName}
           />
         </S.Row>
         <S.Row className="flexRow">
@@ -121,8 +128,16 @@ const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
             <option value="비과세">비과세</option>
           </select>
         </S.Row>
-        <AddOptionRow additoryOptions={additoryOptions} />
-        <S.AddOptionBtn>➕ 추가 옵션 상품 추가</S.AddOptionBtn>
+        <AddOptionRow
+          additoryOptions={additoryOptions}
+          optionsIndex={optionsIndex}
+          optionInfoIndex={optionInfoIndex}
+        />
+        <S.AddOptionBtn
+          onClick={(e) => handleaAddAditoryOptions(e, optionInfoIndex)}
+        >
+          ➕ 추가 옵션 상품 추가
+        </S.AddOptionBtn>
       </Box>
     )),
   )

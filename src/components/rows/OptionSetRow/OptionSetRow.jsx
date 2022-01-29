@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { OptionContext } from '@contexts/OptionContext/OptionProvider'
-import { DELETE_OPTION_SET } from '@contexts/OptionContext/types'
+import { ADD_OPTION, DELETE_OPTION_SET } from '@contexts/OptionContext/types'
 import { Button } from '@components/base'
 import { OptionRow } from '@components/rows'
 import { OptionImageContainer } from '@components/domain'
@@ -16,6 +16,14 @@ const OptionSetRow = () => {
       type: DELETE_OPTION_SET,
       payload: index,
     })
+  }
+
+  const handleAddOption = (e) => {
+    // console.log(e.target.closest('div > div')
+    // dispatch({
+    //   type: ADD_OPTION,
+    //   payload: optionsIndex,
+    // })
   }
 
   return (
@@ -48,6 +56,7 @@ const OptionSetRow = () => {
       <Button
         height={theme.table.baseHeight}
         style={{ marginBottom: theme.table.padding }}
+        onClick={handleAddOption}
       >
         + 옵션 추가
       </Button>
