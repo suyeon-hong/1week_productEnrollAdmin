@@ -1,15 +1,18 @@
+import { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import * as S from './Style'
 import { Box } from '@components/base'
-import { useCallback, useEffect, useState } from 'react'
 import { debounceGenerator } from '@utils/functions'
 import useFetch from '@hooks/useFetch'
+import { useTableDispatch } from '@contexts/TableContext/TableProvider'
+import { CHANGE_PRODUCTION_INFORMATION } from '@contexts/TableContext/types'
 
-const TagSearchModal = ({ setTags, selectedTags, removeTag }) => {
+const TagSearchModal = ({ selectedTags, removeTag }) => {
   const { tags } = useFetch('tags.json')
   const [keyword, setKeyword] = useState('')
   const [filteredTags, setFilteredTags] = useState([])
   const debounce = useCallback(debounceGenerator(400), [])
+  const dispatch = useTableDispatch()
 
   useEffect(() => {
     if (!tags) {
@@ -26,11 +29,16 @@ const TagSearchModal = ({ setTags, selectedTags, removeTag }) => {
 
   const addTag = (e) => {
     const nextTag = e.target.innerHTML
-    setTags((tags) => {
-      if (~tags.findIndex((tag) => tag === nextTag)) {
-        return tags
-      }
-      return [...tags, nextTag]
+    if (~selectedTags.findIndex((tag) => tag === nextTag)) {
+      dispatch({
+        type: CHANGE_PRODUCTION_INFORMATION,
+        payload: { selectedTags },
+      })
+      return
+    }
+    dispatch({
+      type: CHANGE_PRODUCTION_INFORMATION,
+      payload: { tags: [...selectedTags, nextTag] },
     })
   }
 

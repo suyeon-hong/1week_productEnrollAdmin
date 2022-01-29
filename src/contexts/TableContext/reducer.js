@@ -1,4 +1,5 @@
 import {
+  CHANGE_DELIVERY_SETTING,
   CHANGE_OTHER_SETTING,
   CHANGE_PERIOD,
   CHANGE_PRODUCTION_BENEFIT,
@@ -44,7 +45,14 @@ export const initialValue = {
   recommendImages: {
     recommendImages: [],
   },
-  productionDelivery: {},
+  deliverySetting: {
+    isSetDeliveryDate: false,
+    isVisit: false,
+    preOrder: {
+      dawn: [],
+      normal: [],
+    },
+  },
   productionBenefit: false,
   otherSetting: false,
 }
@@ -71,6 +79,12 @@ export const reducer = (state, { type, payload }) => {
     }
     case CHANGE_PERIOD: {
       return { ...state, period: { ...state.period, ...payload } }
+    }
+    case CHANGE_DELIVERY_SETTING: {
+      return {
+        ...state,
+        deliverySetting: { ...state.deliverySetting, ...payload },
+      }
     }
     default: {
       throw new Error('type is inValid')
