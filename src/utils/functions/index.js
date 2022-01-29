@@ -17,3 +17,6 @@ export const debounce = (callback, delay) => {
     }, delay)
   }
 }
+
+export const increaseIndexByOne = (element) =>
+  element.length === 0 ? 0 : element.length
