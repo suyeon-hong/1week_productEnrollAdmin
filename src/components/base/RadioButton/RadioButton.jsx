@@ -39,11 +39,11 @@ const RadioButton = ({
   )
 }
 
-RadioButton.PropTypes = {
-  Items: PropTypes.object,
+RadioButton.propTypes = {
+  Items: PropTypes.array,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   hieght: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 }
 
 RadioButton.defaultProps = {

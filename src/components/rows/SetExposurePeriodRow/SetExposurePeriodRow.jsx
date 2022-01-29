@@ -43,7 +43,7 @@ const SetExposurePeriodRow = ({ itemNum = false, title, items, startNum }) => {
 SetExposurePeriodRow.propTypes = {
   thead: PropTypes.string,
   title: PropTypes.string,
-  Items: PropTypes.object,
+  Items: PropTypes.array,
 }
 SetExposurePeriodRow.defaultProps = {
   thead: '노출 및 판매기간 설정',
