@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types'
 import * as S from './Style'
 
-const ImageUploadButton = ({ isImage = false, isMultiple = true, upload }) => {
+const ImageUploadButton = ({
+  isImage = false,
+  isMultiple = true,
+  upload,
+  itemList,
+}) => {
   const handleChange = (e) => {
     if (isImage) {
       const imageFileInfo = e.target.files[0]
@@ -12,7 +17,7 @@ const ImageUploadButton = ({ isImage = false, isMultiple = true, upload }) => {
     } else {
       const addFiles = [...e.target.files].map((file) => file.name)
       if (isMultiple) {
-        upload((files) => [...files, ...addFiles])
+        upload([...itemList, ...addFiles])
         return
       }
       upload([...addFiles])

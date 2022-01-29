@@ -1,21 +1,26 @@
 import { FilterInput, TagList } from '@components/domain'
-import { useState } from 'react'
+import {
+  useTableDispatch,
+  useTableState,
+} from '@contexts/TableContext/TableProvider'
+import { CHANGE_PRODUCTION_INFORMATION } from '@contexts/TableContext/types'
 
 const TagRow = ({}) => {
-  const [tags, setTags] = useState([])
+  const { productionInformation } = useTableState()
+  const { tags } = productionInformation
+  const dispatch = useTableDispatch()
 
   const removeTag = (e) => {
     const removedTag = e.target.innerHTML
-    setTags((tags) => tags.filter((tag) => tag !== removedTag))
+    dispatch({
+      type: CHANGE_PRODUCTION_INFORMATION,
+      payload: { tags: tags.filter((tag) => tag !== removedTag) },
+    })
   }
 
   return (
     <>
-      <FilterInput
-        setTags={setTags}
-        selectedTags={tags}
-        removeTag={removeTag}
-      />
+      <FilterInput selectedTags={tags} removeTag={removeTag} />
       <TagList tags={tags} removeTag={removeTag} />
     </>
   )
