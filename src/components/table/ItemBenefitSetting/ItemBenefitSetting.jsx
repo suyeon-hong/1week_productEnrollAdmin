@@ -21,6 +21,7 @@ const ItemBenefitSetting = () => {
     <div>
       <Table thead="상품 혜택 허용 설정">
         <TableBody
+          width="90%"
           title="마일리지 적립"
           children={
             <Toggle isToggle={productionBenefit} onChange={handleChange} />

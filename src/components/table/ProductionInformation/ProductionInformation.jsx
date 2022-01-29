@@ -40,7 +40,7 @@ const ProductionInformation = ({}) => {
   return (
     <div style={{ width: `850px` }}>
       <Table thead={'상품 기본 정보'}>
-        <TableBody title={'카테고리*'}>
+        <TableBody title={'카테고리*'} width="100%">
           <CategoryRow />
         </TableBody>
         <TableBody title={'필터 태그'}>

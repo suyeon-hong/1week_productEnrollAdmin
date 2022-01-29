@@ -21,6 +21,7 @@ const OtherSetting = () => {
     <div>
       <Table thead="기타 설정">
         <TableBody
+          width="90%"
           title="감사카드 제공"
           children={<Toggle isToggle={otherSetting} onChange={handleChange} />}
         ></TableBody>

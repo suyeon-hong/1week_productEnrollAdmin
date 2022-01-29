@@ -29,7 +29,7 @@ $ yarn start
 
 - [김지영(팀장)](https://github.com/Jeong-jeong)
 - [고병표](https://github.com/kokoball)
-- [유제호](https://ludacirs.github.io/)
+- [유제호](https://github.com/ludacirs)
 - [홍수연](https://github.com/suyeon-hong)
 
 ## 🌈 담당

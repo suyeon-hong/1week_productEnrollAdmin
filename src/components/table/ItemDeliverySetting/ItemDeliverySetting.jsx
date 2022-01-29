@@ -3,6 +3,7 @@ import { Table } from '@components/base'
 import { TableBody } from '@components/base'
 import { Toggle } from '@components/base'
 import { Calendar } from '@components/base'
+import { AlertModal } from '@components/domain'
 import * as S from './Style.js'
 import {
   useTableDispatch,
@@ -12,8 +13,10 @@ import { CHANGE_DELIVERY_SETTING } from '../../../contexts/TableContext/types'
 
 const ItemDeliverySetting = () => {
   const [reserveDelivery, setReserveDelivery] = useState(true)
-  const [orderTime, setOrderTime] = useState(new Date())
-  const [expireTime, setExpireTime] = useState(new Date())
+  const [diliveryStartTime, setDiliveryStartTime] = useState(new Date())
+  const [diliveryExpiredTime, setDiliveryExpiredTime] = useState(new Date())
+  const [isValidTime, setIsVaildTime] = useState(true)
+  const [isValidDate, setIsVaildDate] = useState(true)
 
   const { deliverySetting } = useTableState()
   const dispatch = useTableDispatch()
@@ -38,24 +41,39 @@ const ItemDeliverySetting = () => {
     setReserveDelivery((value) => !value)
   }
 
-  const onOrderTime = (value) => {
-    setOrderTime(value.getTime())
+  const checkDiliveryStartTime = (value) => {
+    setDiliveryStartTime(value)
   }
 
-  const onExpireTime = (value) => {
-    setExpireTime(value.getTime())
+  const checkDiliveryExpiredTime = (value) => {
+    if (value.getTime() <= diliveryStartTime.getTime()) {
+      setIsVaildTime(false)
+      setDiliveryExpiredTime(value)
+    }
   }
 
   const onAlert = (value) => {
-    value.getTime() <= expireTime &&
-      alert('주문시간 이후로 출고일을 지정해 주세요.')
+    if (diliveryExpiredTime.getTime() > value.getTime()) {
+      setIsVaildDate(false)
+    }
   }
 
   return (
     <>
+      {!isValidTime && (
+        <AlertModal isCancelButton={true} isValidate={false}>
+          주문 시작시간 이후의 시간을 지정해 주세요.
+        </AlertModal>
+      )}
+      {!isValidDate && (
+        <AlertModal isCancelButton={true} isValidate={false}>
+          주문시간 이후로 출고일을 지정해 주세요.
+        </AlertModal>
+      )}
       <Table thead={'상품배송설정'}>
         <TableBody
-          title="사용자 배송일 출발일 설정"
+          width="100%"
+          title="사용자 배송일 출발일 지정"
           children={
             <Toggle
               isToggle={isSetDeliveryDate}
@@ -86,9 +104,20 @@ const ItemDeliverySetting = () => {
                 onChange={onReserveDelivery}
               />
               <S.CalendarWrapper>
-                주문 시간{' '}
-                {<Calendar time={new Date()} handleTime={onOrderTime} />} ~
-                {<Calendar time={new Date()} handleTime={onExpireTime} />}
+                주문 시간
+                {
+                  <Calendar
+                    time={diliveryStartTime}
+                    handleTime={checkDiliveryStartTime}
+                  />
+                }
+                ~
+                {
+                  <Calendar
+                    time={diliveryStartTime}
+                    handleTime={checkDiliveryExpiredTime}
+                  />
+                }
               </S.CalendarWrapper>
               <S.CalendarWrapper>
                 새벽 배송

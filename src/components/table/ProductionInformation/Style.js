@@ -7,8 +7,9 @@ export const Row = styled.div`
 export const ProductionCode = styled.div`
   display: flex;
   position: absolute;
-  top: -30px;
+  top: 50%;
   right: 0;
+  margin-top: -55px;
 
   > * {
     display: flex;
@@ -18,7 +19,7 @@ export const ProductionCode = styled.div`
 `
 export const Head = styled.div`
   width: 150px;
-  height: 98px;
+  height: 110px;
   border-right: 1px solid ${({ theme }) => `${theme.color.border}`};
   background-color: ${({ theme }) => theme.color.tHead};
 `
