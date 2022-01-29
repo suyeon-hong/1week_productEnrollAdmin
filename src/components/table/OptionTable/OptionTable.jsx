@@ -21,30 +21,32 @@ const OptionTable = () => {
 
   return (
     <>
-      <Button
-        width={130}
-        height={theme.table.baseHeight}
-        style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-        }}
-        onClick={AddOptionSet}
-      >
-        삭제
-      </Button>
       <Table thead="상품 옵션*" className="noPadding">
         <Button
           width={130}
           height={theme.table.baseHeight}
           style={{
             position: 'absolute',
-            top: 0,
+            top: -52,
             right: 0,
           }}
           onClick={AddOptionSet}
         >
           + 옵션 세트 추가
+        </Button>
+        <Button
+          width={130}
+          height={theme.table.baseHeight}
+          border={theme.color.red}
+          color={theme.color.red}
+          style={{
+            position: 'relative',
+            left: '87%',
+            marginBottom: 15,
+          }}
+          onClick={AddOptionSet}
+        >
+          삭제
         </Button>
         {options?.length > 0 ? (
           <OptionSetRow />
