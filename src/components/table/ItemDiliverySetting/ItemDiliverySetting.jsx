@@ -55,7 +55,7 @@ const ItemDiliverySetting = () => {
     <>
       <Table thead={'상품배송설정'}>
         <TableBody
-          width="90%"
+          width="100%"
           title="사용자 배송일 출발일 지정"
           children={
             <Toggle
@@ -66,7 +66,6 @@ const ItemDiliverySetting = () => {
           }
         />
         <TableBody
-          width="90%"
           title="방문 수령"
           children={
             <Toggle
@@ -77,7 +76,6 @@ const ItemDiliverySetting = () => {
           }
         />
         <TableBody
-          width="90%"
           title="선 주문 예약 배송"
           children={
             <>

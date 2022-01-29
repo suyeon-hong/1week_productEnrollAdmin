@@ -41,7 +41,7 @@ const OptionTable = () => {
           color={theme.color.red}
           style={{
             position: 'relative',
-            left: '87%',
+            left: '88%',
             marginBottom: 15,
           }}
           onClick={AddOptionSet}
