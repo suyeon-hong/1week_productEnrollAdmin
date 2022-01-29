@@ -1,9 +1,9 @@
-import { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import { OptionContext } from '@contexts/OptionContext/OptionProvider'
 import { ADD_OPTION_SET } from '@contexts/OptionContext/types'
 import { initialValue } from '@contexts/OptionContext/reducer'
 import { OptionSetRow } from '@components/rows'
-import { Table, Button, Box } from '@components/base'
+import { Table, Button } from '@components/base'
 import theme from '@style/theme'
 import * as S from './Style'
 
@@ -11,13 +11,8 @@ const OptionTable = () => {
   const { options, dispatch } = useContext(OptionContext)
 
   const AddOptionSet = () => {
-    console.log('addOption')
     dispatch({ type: ADD_OPTION_SET, payload: initialValue })
   }
-
-  useEffect(() => {
-    console.log(options, 'options')
-  }, [options])
 
   return (
     <>
@@ -58,4 +53,4 @@ const OptionTable = () => {
   )
 }
 
-export default OptionTable
+export default React.memo(OptionTable)

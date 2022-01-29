@@ -5,10 +5,11 @@ export const OptionSetRowContainer = styled.div`
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
+  margin-bottom: 15px;
+  border: ${({ theme }) => `1px solid ${theme.color.border}`};
 `
 
 export const OptionSetRowWrapper = styled.div`
   padding: ${({ theme }) => theme.table.padding};
-  border: ${({ theme }) => `1px solid ${theme.color.border}`};
   margin: 10px 0;
 `
