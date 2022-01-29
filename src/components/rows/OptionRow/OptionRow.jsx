@@ -10,16 +10,16 @@ import {
 import { optionInfoKey } from '@contexts/OptionContext/reducer'
 import AddOptionRow from './AddOptionRow/AddOptionRow'
 import { Box, Button, Input } from '@components/base'
-import { debounceGenerator } from '@utils/functions'
+import { debounceGenerator, calculateDiscount } from '@utils/functions'
 import theme from '@style/theme'
 import * as S from './Style'
 
 const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
   const { options, dispatch } = useContext(OptionContext)
   const addOptionInfoRef = useRef({})
-  const debounceFn = useCallback(debounceGenerator(400), [])
+  const debounceFn = useCallback(debounceGenerator(800), [])
 
-  const { optionName, normalPrice, price, stock, isTax } = optionInfoKey
+  const { optionName, normalPrice, price, stock, isVAT } = optionInfoKey
   const handleOptionDelete = (e, optionInfoIndex) => {
     const deletedOptionInfo = optionInfo.filter(
       (option) => option.index !== optionInfoIndex,
@@ -38,6 +38,7 @@ const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
     })
 
   const handleInput = (e, optionInfoIndex) => {
+    const { normalPrice, price, isVAT, ...props } = addOptionInfoRef.current
     addOptionInfoRef.current[e.target.name] = e.target.value
     addOptionInfoRef.current.optionsIndex = optionsIndex
     addOptionInfoRef.current.optionInfoIndex = optionInfoIndex
@@ -57,6 +58,10 @@ const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
       type: ADD_OPTION,
       payload: optionsIndex,
     })
+  }
+
+  const onChange = (e) => {
+    console.log(e.target.value)
   }
 
   useEffect(() => {
@@ -112,7 +117,9 @@ const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
                 />
                 원
               </S.Inline>
-              <span aria-label="할인율">할인율 %</span>
+              <span aria-label="할인율">
+                {calculateDiscount(option.normalPrice, option.price)} %
+              </span>
               <S.Inline>
                 <Input
                   name={price}
@@ -133,9 +140,12 @@ const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
                 />
                 개
               </S.Inline>
-              <select name="" id="">
-                <option value="과세">과세</option>
-                <option value="비과세">비과세</option>
+              <select
+                onChange={(e) => handleInput(e, optionInfoIndex)}
+                name={isVAT}
+              >
+                <option value={true}>과세</option>
+                <option value={false}>비과세</option>
               </select>
             </S.Row>
             <AddOptionRow
@@ -162,4 +172,4 @@ const OptionRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
   )
 }
 
-export default OptionRow
+export default React.memo(OptionRow)

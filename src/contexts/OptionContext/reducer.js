@@ -20,10 +20,13 @@ export const initialValue = {
       optionName: '',
       normalPrice: 0,
       price: 0,
+      discount: 0,
       stock: 0,
-      isTax: true,
+      isVAT: true,
+      VAT: 0,
     },
   ],
+  totalStock: 0,
   additoryOptions: [],
 }
 
@@ -32,8 +35,10 @@ export const optionInfoElement = {
   optionName: '',
   normalPrice: 0,
   price: 0,
+  discount: 0,
   stock: 0,
-  isTax: true,
+  isVAT: true,
+  VAT: 0,
 }
 
 export const additoryOptionsElement = {
@@ -46,8 +51,9 @@ export const optionInfoKey = {
   optionName: 'optionName',
   normalPrice: 'normalPrice',
   price: 'price',
+  discount: 'discount',
   stock: 'stock',
-  isTax: 'isTax',
+  isVAT: 'isVAT',
 }
 
 export const additoryOptionsKey = {
@@ -88,6 +94,24 @@ export const reducer = (state, { type, payload }) => {
       const current =
         newState[+payload.optionsIndex].optionInfo[payload.optionInfoIndex]
       Object.entries(payload).forEach(([key, value]) => (current[key] = value))
+
+      // @NOTE: 과세로 지정될 경우, 입력된 판매가의 10% 부과세로 저장
+      if (!!payload.isVAT) {
+        newState[+payload.optionsIndex].optionInfo[
+          payload.optionInfoIndex
+        ].VAT =
+          +newState[+payload.optionsIndex].optionInfo[payload.optionInfoIndex]
+            .price * 0.1
+      }
+
+      // @NOTE: 총 재고 수량 업데이트
+      if (payload.stock) {
+        const total = newState[+payload.optionsIndex].optionInfo.reduce(
+          (acc, cur) => acc + +cur.stock,
+          0,
+        )
+        newState[+payload.optionsIndex].totalStock = total
+      }
 
       return newState
     }
