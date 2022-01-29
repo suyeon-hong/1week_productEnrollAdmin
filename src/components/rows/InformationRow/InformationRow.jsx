@@ -9,8 +9,6 @@ import {
 import { optionInfoKey } from '@contexts/OptionContext/reducer'
 import AddInformationRow from './AddInformationRow/AddInformationRow'
 import { Box, Button, Input } from '@components/base'
-import { debounce } from '@utils/functions'
-import theme from '@style/theme'
 import * as S from './Style'
 
 const InformationRow = ({ optionInfo, additoryOptions, optionsIndex }) => {
