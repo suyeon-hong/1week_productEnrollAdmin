@@ -6,7 +6,7 @@ export const TableBodyRow = styled.tr`
 `
 
 export const TableBodyHead = styled.th`
-  width: 150px;
+  width: 500px;
   background-color: ${({ theme }) => theme.color.tHead};
   font-weight: normal;
   text-align: left;

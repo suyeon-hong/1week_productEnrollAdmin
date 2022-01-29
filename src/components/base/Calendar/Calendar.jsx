@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 import * as S from './Style'
 
 const Calendar = ({ time, handleTime }) => {
-  const [date, setDate] = useState(time ? time : new Date('2021-01-25 18:44'))
+  const [date, setDate] = useState(time ? time : new Date())
 
   const handleChange = (value) => {
-    setDate(value)
     handleTime(value)
+    setDate(value)
   }
 
   return (

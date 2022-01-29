@@ -15,6 +15,7 @@ export const TableWrapper = styled.table`
   th,
   td {
     border-color: ${({ theme }) => `${theme.color.border}`};
+    position: relative;
   }
 
   td {
@@ -22,7 +23,7 @@ export const TableWrapper = styled.table`
   }
 
   &.noPadding td {
-    padding-left: ${({ theme }) => theme.table.padding};
+    padding: ${({ theme }) => theme.table.padding};
   }
 `
 

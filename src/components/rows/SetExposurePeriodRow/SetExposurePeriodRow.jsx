@@ -22,7 +22,7 @@ const SetExposurePeriodRow = ({ itemNum = false, title, items, startNum }) => {
   }, [firstTime, secondTime])
 
   return (
-    <TableBody title={title} width="80%">
+    <TableBody title={title} width="100%">
       <RadioButton
         items={items}
         name={title}
