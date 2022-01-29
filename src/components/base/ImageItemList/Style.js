@@ -13,3 +13,7 @@ export const ImageItem = styled.li`
   overflow: hidden;
   text-overflow: ellipsis;
 `
+
+export const XButton = styled.button`
+  padding: 5px;
+`
