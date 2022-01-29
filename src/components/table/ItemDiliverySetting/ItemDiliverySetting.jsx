@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
-import { Table } from '@components/base'
-import { TableBody } from '@components/base'
-import { Toggle } from '@components/base'
-import { Calendar } from '@components/base'
+import { Table, TableBody, Toggle, Calendar } from '@components/base'
 import { AlertModal } from '@components/domain'
-import * as S from './Style.js'
+import * as S from './Style'
 
 const ItemDiliverySetting = () => {
   const [customDelivery, setCustomDelivery] = useState(false)

@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import { Table } from '@components/base'
-import { TableBody } from '@components/base'
-import { Toggle } from '@components/base'
+import { Table, TableBody, Toggle } from '@components/base'
 
 const ItemBenefitSetting = () => {
   const [isChecked, setIsChecked] = useState(true)

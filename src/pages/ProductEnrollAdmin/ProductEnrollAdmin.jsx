@@ -1,16 +1,18 @@
 import React from 'react'
-import { ItemDiliverySetting } from '@components/table'
-import { ItemBenefitSetting } from '@components/table'
-import { OtherSetting } from '@components/table'
-import { OptionTable } from '@components/table'
-import { ProductImageTable } from '@components/table'
-import { RecommendImageTable } from '@components/table'
-import { ProductionInformation } from '@components/table'
-import { SetPeriodTable } from '@components/table'
-import { Button } from '@components/base'
-import { Gnb } from '@components/base'
+import {
+  ItemDiliverySetting,
+  ItemBenefitSetting,
+  OtherSetting,
+  OptionTable,
+  ProductImageTable,
+  RecommendImageTable,
+  RecommendImageTable,
+  ProductionInformation,
+  SetPeriodTable,
+} from '@components/table'
+import { Button, Gnb } from '@components/base'
+import theme from '@style/theme'
 import * as S from './style'
-import theme from '../../style/theme'
 
 const ProductEnrollAdmin = () => {
   return (
