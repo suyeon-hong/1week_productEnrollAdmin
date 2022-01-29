@@ -27,7 +27,6 @@ export const ToggleInput = styled.input`
 `
 
 export const ToggleSwitch = styled.div`
-  margin-top: 100px;
   display: inline-flex;
   align-items: center;
   width: 45px;
