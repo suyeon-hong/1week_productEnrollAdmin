@@ -7,16 +7,25 @@ export const PageWrapper = styled.div`
 
 export const Logo = styled.h1`
   width: 100%;
-  padding: ${({ theme }) => theme.table.padding};
-  font: 24px/1 'arial';
+  heigth: 50px;
+  padding-left: ${({ theme }) => theme.table.padding};
+  font: 24px/50px 'arial';
   color: ${({ theme }) => theme.color.purple};
+  background: #fff;
   border-bottom: 1px solid ${({ theme }) => theme.color.border};
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
 `
 
 export const Gnb = styled.ul`
   width: 15vw;
   min-width: 180px;
   border-right: 1px solid ${({ theme }) => theme.color.border};
+  position: fixed;
+  top: 50px;
+  left: 0;
 `
 
 export const Menu = styled.li`
@@ -40,11 +49,13 @@ export const ActiveMenu = styled(InnerMenu)`
 export const FormWrapper = styled.div`
   width: 100%;
   position: relative;
+  padding-left: 15vw;
+  padding-top: 100px;
 `
 
 export const Form = styled.form`
   width: 100%;
-  padding: 70px ${({ theme }) => theme.table.padding};
+  padding: ${({ theme }) => theme.table.padding};
 `
 
 export const Title = styled.h2`
@@ -56,5 +67,7 @@ export const Title = styled.h2`
   padding-left: ${({ theme }) => theme.table.padding};
   border: 1px solid ${({ theme }) => theme.color.border};
   position: fixed;
+  top: 50px;
+  left: 15vw;
   z-index: 1;
 `
