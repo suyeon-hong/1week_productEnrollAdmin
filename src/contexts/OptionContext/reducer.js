@@ -7,6 +7,7 @@ import {
   DELETE_OPTION,
   UPDATE_OPTION_INFO,
   ADD_ADDITORY_OPTION,
+  UPDATE_ADDITORY_OPTION,
   DELETE_ADDITORY_OPTION,
 } from './types'
 
@@ -26,6 +27,15 @@ export const initialValue = {
   additoryOptions: [],
 }
 
+export const optionInfoElement = {
+  index: 0,
+  optionName: '',
+  normalPrice: 0,
+  price: 0,
+  stock: 0,
+  isTax: true,
+}
+
 export const additoryOptionsElement = {
   index: 0,
   addOptionName: '',
@@ -38,6 +48,11 @@ export const optionInfoKey = {
   price: 'price',
   stock: 'stock',
   isTax: 'isTax',
+}
+
+export const additoryOptionsKey = {
+  addOptionName: 'addOptionName',
+  addOptionNormalPrice: 'addOptionNormalPrice',
 }
 
 export const reducer = (state, { type, payload }) => {
@@ -55,9 +70,12 @@ export const reducer = (state, { type, payload }) => {
     }
     case ADD_OPTION: {
       const newState = deepCopy(state)
-      console.log(payload)
+      newState[+payload].optionInfo.push({
+        ...optionInfoElement,
+        index: increaseIndexByOne(newState[+payload].optionInfo),
+      })
 
-      return state
+      return newState
     }
     case DELETE_OPTION: {
       const { optionsIndex, deletedOptionInfo } = payload
@@ -87,14 +105,28 @@ export const reducer = (state, { type, payload }) => {
       })
       return newState
     }
+    case UPDATE_ADDITORY_OPTION: {
+      const newState = deepCopy(state)
+      const { index, value } = payload
+
+      const current =
+        newState[+index.optionsIndex].additoryOptions[index.optionInfoIndex][
+          index.currentIndex
+        ]
+
+      Object.entries(value).forEach(([key, value]) => (current[key] = value))
+
+      return newState
+    }
     case DELETE_ADDITORY_OPTION: {
-      const { optionsIndex, optionInfoIndex, clickedIndex } = payload
+      const { optionsIndex, optionInfoIndex, currentIndex } = payload
       const newState = deepCopy(state)
       const additoryOptionsArrayElement =
         newState[+optionsIndex].additoryOptions[optionInfoIndex]
+      console.log(currentIndex)
       const deleteAdditoryOptionsArrayElement =
         additoryOptionsArrayElement.filter(
-          (element) => element.index !== clickedIndex,
+          (element) => element.index !== currentIndex,
         )
       newState[+payload.optionsIndex].additoryOptions[optionInfoIndex] =
         deleteAdditoryOptionsArrayElement
