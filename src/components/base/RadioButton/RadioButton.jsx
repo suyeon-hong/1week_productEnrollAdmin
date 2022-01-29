@@ -1,17 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import * as S from './Style'
 
-const RadioButton = ({ Items, width, height, color, ...props }) => {
-  const [index, setIndex] = useState(1)
+const RadioButton = ({
+  items,
+  startNum,
+  unexposed = false,
+  name,
+  width,
+  height,
+  color,
+  ...props
+}) => {
+  const [index, setIndex] = useState(startNum)
+
+  useEffect(() => {
+    if (unexposed === true) {
+      setIndex(startNum + 1)
+    }
+  }, [unexposed])
+
   return (
     <S.RadioWrapper>
-      {Items.map((item) => (
+      {items.map((item) => (
         <div key={item.index}>
           <S.InputItem
             id={item.index}
             type="radio"
-            name="item-selector"
+            name={name}
             value={item.item}
             checked={index === item.index}
             onChange={(e) => setIndex(+e.currentTarget.id)}
