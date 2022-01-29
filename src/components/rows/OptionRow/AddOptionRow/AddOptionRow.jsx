@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useCallback } from 'react'
+import PropTypes from 'prop-types'
 import { OptionContext } from '@contexts/OptionContext/OptionProvider'
 import {
   DELETE_ADDITORY_OPTION,
@@ -13,7 +14,7 @@ import * as S from '../Style'
 const AddOptionRow = ({ additoryOptions, optionsIndex, optionInfoIndex }) => {
   const { addOptionName, addOptionNormalPrice } = additoryOptionsKey
   const updateAdditoryOptionsRef = useRef({})
-  const { options, dispatch } = useContext(OptionContext)
+  const { _, dispatch } = useContext(OptionContext)
   const debounceFn = useCallback(debounceGenerator(1000), [])
 
   const handleDeleteAdditoryOptions = (e, currentIndex) => {
@@ -78,6 +79,18 @@ const AddOptionRow = ({ additoryOptions, optionsIndex, optionInfoIndex }) => {
       )),
     )
   )
+}
+
+AddOptionRow.PropTypes = {
+  additoryOptions: PropTypes.array,
+  optionsIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  optionInfoIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+}
+
+AddOptionRow.PropTypes = {
+  additoryOptions: [],
+  optionsIndex: 0,
+  optionInfoIndex: 0,
 }
 
 export default React.memo(AddOptionRow)
