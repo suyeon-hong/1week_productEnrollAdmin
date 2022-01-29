@@ -8,6 +8,8 @@ import {
   useTableState,
 } from '../../../contexts/TableContext/TableProvider'
 import { CHANGE_PRODUCTION_INFORMATION } from '../../../contexts/TableContext/types'
+import { useContext, useEffect, useState } from 'react'
+import { OptionContext } from '../../../contexts/OptionContext/OptionProvider'
 
 const ProductionInformation = ({}) => {
   const { productionInformation } = useTableState()
@@ -19,6 +21,14 @@ const ProductionInformation = ({}) => {
     mainImages,
   } = productionInformation
   const dispatch = useTableDispatch()
+  const [stock, setStock] = useState(0)
+  const { options } = useContext(OptionContext)
+
+  useEffect(() => {
+    if (options && options[0]) {
+      setStock(options.reduce((acc, { totalStock }) => totalStock + acc, 0))
+    }
+  }, [options])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -84,7 +94,7 @@ const ProductionInformation = ({}) => {
             setItemList={setImage('mainImages')}
           />
         </TableBody>
-        <TableBody title={'상품 총 재고*'}>N개</TableBody>
+        <TableBody title={'상품 총 재고*'}>{stock}개</TableBody>
       </Table>
     </>
   )
