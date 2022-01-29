@@ -12,6 +12,8 @@ const ItemDiliverySetting = () => {
   const [reserveDelivery, setReserveDelivery] = useState(true)
   const [diliveryStartTime, setDiliveryStartTime] = useState(new Date())
   const [diliveryExpiredTime, setDiliveryExpiredTime] = useState(new Date())
+  const [isValidTime, setIsVaildTime] = useState(true)
+  const [isValidDate, setIsVaildDate] = useState(true)
 
   const onCustomDelevery = () => {
     setCustomDelivery((value) => !value)
@@ -30,29 +32,30 @@ const ItemDiliverySetting = () => {
   }
 
   const checkDiliveryExpiredTime = (value) => {
-    setDiliveryExpiredTime(value)
     if (value.getTime() <= diliveryStartTime.getTime()) {
-      return (
-        <AlertModal isCancelButton={true} isValidate={false}>
-          주문시작시간 이후의 시간을 선택해 주세요.
-        </AlertModal>
-      )
+      setIsVaildTime(false)
+      setDiliveryExpiredTime(value)
     }
   }
 
   const onAlert = (value) => {
     if (diliveryExpiredTime.getTime() > value.getTime()) {
-      console.log(diliveryExpiredTime.getTime() > value.getTime())
-      return (
-        <AlertModal isCancelButton={true} isValidate={false}>
-          주문시간 이후로 출고일을 지정해 주세요.
-        </AlertModal>
-      )
+      setIsVaildDate(false)
     }
   }
 
   return (
     <>
+      {!isValidTime && (
+        <AlertModal isCancelButton={true} isValidate={false}>
+          주문 시작시간 이후의 시간을 지정해 주세요.
+        </AlertModal>
+      )}
+      {!isValidDate && (
+        <AlertModal isCancelButton={true} isValidate={false}>
+          주문시간 이후로 출고일을 지정해 주세요.
+        </AlertModal>
+      )}
       <Table thead={'상품배송설정'}>
         <TableBody
           width="100%"
