@@ -26,6 +26,7 @@ const Button = ({
       color={color}
       onClick={onClick}
       style={{ ...props.style }}
+      onClick={onClick}
     >
       {children}
     </S.ButtonWrapper>

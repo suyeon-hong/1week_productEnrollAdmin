@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 
 export const TagSearchModalWrapper = styled.div`
+  position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -21,7 +22,33 @@ export const TagSearchModalWrapper = styled.div`
 
 export const TagList = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   > * {
     margin: 5px;
+  }
+`
+
+export const Title = styled.div`
+  position: absolute;
+  font-size: 12px;
+  left: 50px;
+  top: 212px;
+`
+
+export const Input = styled.input`
+  width: 525px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+`
+
+export const TagItem = styled.li`
+  width: auto;
+  padding: 12px;
+  background: ${({ theme }) => theme.color.filterTag};
+  cursor: pointer;
+  &.selected::after {
+    content: 'X';
+    margin-left: 5px;
   }
 `

@@ -20,3 +20,16 @@ export const debounce = (callback, delay) => {
 
 export const increaseIndexByOne = (element) =>
   element.length === 0 ? 0 : element.length
+
+export const debounceGenerator = (ms) => {
+  let id
+  return (cb) => {
+    if (id) {
+      clearTimeout(id)
+    }
+    id = setTimeout(() => {
+      cb()
+      id = null
+    }, ms)
+  }
+}

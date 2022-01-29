@@ -11,7 +11,11 @@ const ImageUploadButton = ({ isImage = false, isMultiple = true, upload }) => {
       })
     } else {
       const addFiles = [...e.target.files].map((file) => file.name)
-      upload((files) => [...files, ...addFiles])
+      if (isMultiple) {
+        upload((files) => [...files, ...addFiles])
+        return
+      }
+      upload([...addFiles])
     }
   }
 

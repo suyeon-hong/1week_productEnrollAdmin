@@ -11,4 +11,5 @@ export const ButtonWrapper = styled.button`
   border-radius: ${({ radius, theme }) => (radius ? theme.border.radius : 0)};
   background: ${({ background }) => (background ? background : '#fff')};
   color: ${({ color }) => color && color};
+  cursor: pointer;
 `

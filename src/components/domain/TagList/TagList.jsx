@@ -1,16 +1,19 @@
 import PropTypes from 'prop-types'
 import * as S from './Style'
+import { TagItem } from '../TagSearchModal/Style'
 
-const TagList = ({ tags }) => {
+const TagList = ({ tags, removeTag }) => {
   return (
-    <>
+    <S.TagListWrapper>
       지정된 필터 태그
-      <S.TagListWrapper>
+      <S.TagList>
         {tags.map((tag) => (
-          <div key={tag}>{tag}</div>
+          <TagItem className={'selected'} key={tag} onClick={removeTag}>
+            {tag}
+          </TagItem>
         ))}
-      </S.TagListWrapper>
-    </>
+      </S.TagList>
+    </S.TagListWrapper>
   )
 }
 

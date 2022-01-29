@@ -7,4 +7,6 @@ export const BoxWrapper = styled.div`
   padding: 10px 20px;
   border: ${({ border }) => `1px solid ${border}`};
   border-radius: 4px;
+  background: #fff;
+  overflow-y: auto;
 `
