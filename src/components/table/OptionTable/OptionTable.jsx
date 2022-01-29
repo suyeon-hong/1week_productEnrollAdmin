@@ -15,10 +15,6 @@ const OptionTable = () => {
     dispatch({ type: ADD_OPTION_SET, payload: initialValue })
   }
 
-  useEffect(() => {
-    console.log(options, 'options')
-  }, [options])
-
   return (
     <>
       <Button
