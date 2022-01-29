@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { OptionContext } from '@contexts/OptionContext/OptionProvider'
 import { ADD_OPTION_SET } from '@contexts/OptionContext/types'
 import { initialValue } from '@contexts/OptionContext/reducer'
@@ -58,4 +58,4 @@ const OptionTable = () => {
   )
 }
 
-export default OptionTable
+export default React.memo(OptionTable)

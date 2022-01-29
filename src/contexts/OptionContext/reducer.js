@@ -7,6 +7,7 @@ import {
   DELETE_OPTION,
   UPDATE_OPTION_INFO,
   ADD_ADDITORY_OPTION,
+  UPDATE_ADDITORY_OPTION,
   DELETE_ADDITORY_OPTION,
 } from './types'
 
@@ -19,11 +20,25 @@ export const initialValue = {
       optionName: '',
       normalPrice: 0,
       price: 0,
+      discount: 0,
       stock: 0,
-      isTax: true,
+      isVAT: true,
+      VAT: 0,
     },
   ],
+  totalStock: 0,
   additoryOptions: [],
+}
+
+export const optionInfoElement = {
+  index: 0,
+  optionName: '',
+  normalPrice: 0,
+  price: 0,
+  discount: 0,
+  stock: 0,
+  isVAT: true,
+  VAT: 0,
 }
 
 export const additoryOptionsElement = {
@@ -36,8 +51,14 @@ export const optionInfoKey = {
   optionName: 'optionName',
   normalPrice: 'normalPrice',
   price: 'price',
+  discount: 'discount',
   stock: 'stock',
-  isTax: 'isTax',
+  isVAT: 'isVAT',
+}
+
+export const additoryOptionsKey = {
+  addOptionName: 'addOptionName',
+  addOptionNormalPrice: 'addOptionNormalPrice',
 }
 
 export const reducer = (state, { type, payload }) => {
@@ -55,9 +76,12 @@ export const reducer = (state, { type, payload }) => {
     }
     case ADD_OPTION: {
       const newState = deepCopy(state)
-      console.log(payload)
+      newState[+payload].optionInfo.push({
+        ...optionInfoElement,
+        index: increaseIndexByOne(newState[+payload].optionInfo),
+      })
 
-      return state
+      return newState
     }
     case DELETE_OPTION: {
       const { optionsIndex, deletedOptionInfo } = payload
@@ -70,6 +94,24 @@ export const reducer = (state, { type, payload }) => {
       const current =
         newState[+payload.optionsIndex].optionInfo[payload.optionInfoIndex]
       Object.entries(payload).forEach(([key, value]) => (current[key] = value))
+
+      // @NOTE: 과세로 지정될 경우, 입력된 판매가의 10% 부과세로 저장
+      if (!!payload.isVAT) {
+        newState[+payload.optionsIndex].optionInfo[
+          payload.optionInfoIndex
+        ].VAT =
+          +newState[+payload.optionsIndex].optionInfo[payload.optionInfoIndex]
+            .price * 0.1
+      }
+
+      // @NOTE: 총 재고 수량 업데이트
+      if (payload.stock) {
+        const total = newState[+payload.optionsIndex].optionInfo.reduce(
+          (acc, cur) => acc + +cur.stock,
+          0,
+        )
+        newState[+payload.optionsIndex].totalStock = total
+      }
 
       return newState
     }
@@ -87,14 +129,28 @@ export const reducer = (state, { type, payload }) => {
       })
       return newState
     }
+    case UPDATE_ADDITORY_OPTION: {
+      const newState = deepCopy(state)
+      const { index, value } = payload
+
+      const current =
+        newState[+index.optionsIndex].additoryOptions[index.optionInfoIndex][
+          index.currentIndex
+        ]
+
+      Object.entries(value).forEach(([key, value]) => (current[key] = value))
+
+      return newState
+    }
     case DELETE_ADDITORY_OPTION: {
-      const { optionsIndex, optionInfoIndex, clickedIndex } = payload
+      const { optionsIndex, optionInfoIndex, currentIndex } = payload
       const newState = deepCopy(state)
       const additoryOptionsArrayElement =
         newState[+optionsIndex].additoryOptions[optionInfoIndex]
+      console.log(currentIndex)
       const deleteAdditoryOptionsArrayElement =
         additoryOptionsArrayElement.filter(
-          (element) => element.index !== clickedIndex,
+          (element) => element.index !== currentIndex,
         )
       newState[+payload.optionsIndex].additoryOptions[optionInfoIndex] =
         deleteAdditoryOptionsArrayElement
