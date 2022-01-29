@@ -54,6 +54,7 @@ const ProductionInformation = ({}) => {
               name={'productionName'}
               onChange={handleChange}
               width={250}
+              required={true}
             />
             <S.ProductionCode>
               <S.Head>상품 코드</S.Head>
@@ -67,6 +68,7 @@ const ProductionInformation = ({}) => {
             value={productionDescribe}
             name={'productionDescribe'}
             placeholder={'상품 구성 소개 정보를 입력해 주세요.'}
+            required={true}
           />
         </TableBody>
         <TableBody title={'상품 썸네일'}>
