@@ -91,9 +91,19 @@ $ yarn start
   - aws S3 배포
 
 - ### 고병표
-
-  - `상품 정보고시 테이블()` 구현
-  - `노출 및 판매기간 설정, 상품 소개, 구매자 추천 테이블` 구현
+  - `노출 및 판매 기간 테이블(SetPeriodTable)` 구현
+    - RadioButton 기본값("제한 없음")설정
+    - 랜더링 시 Calender 기본값 설정 (1번 Calender : 현재 시간, 2번 Calender : 한 달 뒤)
+    - 2번 Calender의 설정 날짜가 1번 Calender 보다 빠를 경우 Check value "미 노출" 상태로 변경
+    - 상품 총 재고가 0이 (check = false) 되는 경우, 자동으로 "미판매" 상태로 변경 
+    
+  - `상품 정보고시 테이블(ItemInformationTable)` 구현
+    - 랜더링 시 '정보 고시 1' Table 불러오게 기본값 설정
+    - 옵션 세트 추가/삭제, 항목 추가/삭제
+    
+  - `상품 소개, 구매자 추천 테이블(ProductImageTable, RecommendImageTable)` 구현
+    - 이미지 첨부 Tab 시, 우측에 이미지 파일명 X 버튼과 함께 노출
+    - X 버튼 클릭시 파일명 삭제
 
 - ### 홍수연
   - `상품 배송 설정, 상품 혜택 허용, 기타 설정 테이블` 구현
