@@ -1,7 +1,8 @@
 import {
+  CHANGE_OTHER_SETTING,
+  CHANGE_PRODUCTION_BENEFIT,
   CHANGE_PRODUCTION_IMAGES,
   CHANGE_PRODUCTION_INFORMATION,
-  CHANGE_RECOMMEND_IMAGES,
 } from './types'
 
 export const initialValue = {
@@ -24,8 +25,6 @@ export const initialValue = {
     thumbnail: [],
     mainImages: [],
   },
-  period: {},
-  options: {},
   productionImages: {
     productionImages: [],
   },
@@ -33,7 +32,8 @@ export const initialValue = {
     recommendImages: [],
   },
   productionDelivery: {},
-  productionBenefit: {},
+  productionBenefit: false,
+  otherSetting: false,
 }
 
 export const reducer = (state, { type, payload }) => {
@@ -50,11 +50,11 @@ export const reducer = (state, { type, payload }) => {
         productionImages: { ...state.productionImages, ...payload },
       }
     }
-    case CHANGE_RECOMMEND_IMAGES: {
-      return {
-        ...state,
-        recommendImages: { ...state.recommendImages, ...payload },
-      }
+    case CHANGE_PRODUCTION_BENEFIT: {
+      return { ...state, productionBenefit: payload }
+    }
+    case CHANGE_OTHER_SETTING: {
+      return { ...state, otherSetting: payload }
     }
     default: {
       throw new Error('type is inValid')

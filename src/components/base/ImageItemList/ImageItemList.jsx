@@ -7,7 +7,6 @@ const ImageItemList = ({ itemList, upload }) => {
     upload(changeArray)
   }
 
-  console.log(itemList)
   return (
     <S.ImageItemListWrapper>
       {itemList.map((item, index) => (
