@@ -33,3 +33,8 @@ export const debounceGenerator = (ms) => {
     }, ms)
   }
 }
+
+export const calculateDiscount = (normalPrice, price) => {
+  if (+normalPrice === 0 || +price === 0) return '할인율 없음'
+  return Math.floor(((+normalPrice - +price) / +price) * 100)
+}
