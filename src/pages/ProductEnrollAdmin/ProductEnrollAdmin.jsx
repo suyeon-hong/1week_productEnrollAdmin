@@ -6,7 +6,6 @@ import {
   OptionTable,
   ProductImageTable,
   RecommendImageTable,
-  RecommendImageTable,
   ProductionInformation,
   SetPeriodTable,
 } from '@components/table'
