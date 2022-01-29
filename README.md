@@ -58,28 +58,28 @@ $ yarn start
 
     ```js
     {
-    	index: 0, // 각 옵션세트 인덱스
-    	imageInfo: {},
-    	optionInfo: [ // 옵션 세트 내 옵션 정보
-    		{
-    			index: 0,
-    			optionName: '',
-    			normalPrice: 0, // 정상가
-    			price: 0, // 할인가
-    			discount: 0,
-    			stock: 0,
-    			isVAT: true,
-    			VAT: 0, // 부과세
-    		},
-    	],
-    	totalStock: 0, // 옵션 세트 내 모든 옵션의 stock 총합
-    	additoryOptions: [ // 옵션 세트 내 옵션 내 추가
-    		{
-    			index: 0,
-    			addOptionName: '',
-    			addOptionNormalPrice: 0,
-    		},
-    	],
+      index: 0, // 각 옵션세트 인덱스
+      imageInfo: {},
+      optionInfo: [ // 옵션 세트 내 옵션 정보
+      {
+        index: 0,
+        optionName: '',
+        normalPrice: 0, // 정상가
+        price: 0, // 할인가
+        discount: 0,
+        stock: 0,
+        isVAT: true,
+        VAT: 0, // 부과세
+        },
+      ],
+      totalStock: 0, // 옵션 세트 내 모든 옵션의 stock 총합
+      additoryOptions: [ // 옵션 세트 내 옵션 내 추가
+      {
+        index: 0,
+        addOptionName: '',
+        addOptionNormalPrice: 0,
+        },
+      ],
     }
     ```
 
