@@ -1,11 +1,10 @@
 import * as S from './Style'
-import { Box } from '../../base'
-import CheckBox from '../../base/CheckBox/CheckBox'
+import { CheckBox, Box } from '@components/base'
 import {
   useTableDispatch,
   useTableState,
-} from '../../../contexts/TableContext/TableProvider'
-import { CHANGE_PRODUCTION_INFORMATION } from '../../../contexts/TableContext/types'
+} from '@contexts/TableContext/TableProvider'
+import { CHANGE_PRODUCTION_INFORMATION } from '@contexts/TableContext/types'
 
 const CategoryRow = ({}) => {
   const { productionInformation } = useTableState()
@@ -27,10 +26,10 @@ const CategoryRow = ({}) => {
 
   return (
     <S.CategoryRowWrapper>
-      <Box width={350} height={300}>
+      <Box width={'50%'} height={300}>
         <CheckBox categories={categories} dispatch={dispatch} />
       </Box>
-      <Box width={200} height={300}>
+      <Box width={'50%'} height={300}>
         <S.SelectedCategories>
           {categories.map(
             ({ name, checked }) =>

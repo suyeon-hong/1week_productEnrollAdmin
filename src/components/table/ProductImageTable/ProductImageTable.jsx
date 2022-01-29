@@ -4,8 +4,8 @@ import { ImageContainer } from '@components/domain'
 import {
   useTableDispatch,
   useTableState,
-} from '../../../contexts/TableContext/TableProvider'
-import { CHANGE_PRODUCTION_IMAGES } from '../../../contexts/TableContext/types'
+} from '@contexts/TableContext/TableProvider'
+import { CHANGE_PRODUCTION_IMAGES } from '@contexts/TableContext/types'
 
 const ProductImageTable = ({ check = true }) => {
   const { productionImages } = useTableState()
