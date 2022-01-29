@@ -6,11 +6,11 @@ export const TableBodyRow = styled.tr`
 `
 
 export const TableBodyHead = styled.th`
-  width: 500px;
+  width: 20%;
   background-color: ${({ theme }) => theme.color.tHead};
   font-weight: normal;
   text-align: left;
 `
 export const TableBodyContent = styled.td`
-  width: ${({ width }) => width && checkTypeOfCss(width)};
+  width: 100vw;
 `

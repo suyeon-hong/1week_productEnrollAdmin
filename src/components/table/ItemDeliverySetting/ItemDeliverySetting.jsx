@@ -8,8 +8,8 @@ import * as S from './Style.js'
 import {
   useTableDispatch,
   useTableState,
-} from '../../../contexts/TableContext/TableProvider'
-import { CHANGE_DELIVERY_SETTING } from '../../../contexts/TableContext/types'
+} from '@contexts/TableContext/TableProvider'
+import { CHANGE_DELIVERY_SETTING } from '@contexts/TableContext/types'
 
 const ItemDeliverySetting = () => {
   const [reserveDelivery, setReserveDelivery] = useState(true)

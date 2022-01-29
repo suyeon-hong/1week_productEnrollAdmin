@@ -5,8 +5,8 @@ import { Toggle } from '@components/base'
 import {
   useTableDispatch,
   useTableState,
-} from '../../../contexts/TableContext/TableProvider'
-import { CHANGE_OTHER_SETTING } from '../../../contexts/TableContext/types'
+} from '@contexts/TableContext/TableProvider'
+import { CHANGE_OTHER_SETTING } from '@contexts/TableContext/types'
 
 const OtherSetting = () => {
   const { otherSetting } = useTableState()

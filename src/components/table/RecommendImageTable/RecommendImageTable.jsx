@@ -4,8 +4,8 @@ import { ImageContainer } from '@components/domain'
 import {
   useTableDispatch,
   useTableState,
-} from '../../../contexts/TableContext/TableProvider'
-import { CHANGE_RECOMMEND_IMAGES } from '../../../contexts/TableContext/types'
+} from '@contexts/TableContext/TableProvider'
+import { CHANGE_RECOMMEND_IMAGES } from '@contexts/TableContext/types'
 
 const RecommendImageTable = ({ check = true }) => {
   const { recommendImages } = useTableState()
