@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  ItemDiliverySetting,
   ItemBenefitSetting,
   OtherSetting,
   OptionTable,
@@ -10,6 +9,7 @@ import {
   RecommendImageTable,
 } from '@components/table'
 import { useTableState } from '../../contexts/TableContext/TableProvider'
+import { ItemDeliverySetting } from '../../components/table'
 
 const ProductEnrollAdmin = () => {
   const tableState = useTableState()
@@ -28,7 +28,7 @@ const ProductEnrollAdmin = () => {
       <OptionTable />
       <ProductImageTable />
       <RecommendImageTable />
-      <ItemDiliverySetting />
+      <ItemDeliverySetting />
       <ItemBenefitSetting />
       <OtherSetting />
     </>

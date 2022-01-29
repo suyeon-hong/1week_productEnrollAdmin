@@ -5,14 +5,14 @@ import { Toggle } from '@components/base'
 import { Calendar } from '@components/base'
 import * as S from './Style.js'
 
-const ItemDiliverySetting = () => {
+const ItemDeliverySetting = () => {
   const [customDelivery, setCustomDelivery] = useState(false)
   const [visitGet, setVisitGet] = useState(false)
   const [reserveDelivery, setReserveDelivery] = useState(true)
   const [orderTime, setOrderTime] = useState(new Date())
   const [expireTime, setExpireTime] = useState(new Date())
 
-  const onCustomDelevery = () => {
+  const onCustomDelivery = () => {
     setCustomDelivery((value) => !value)
   }
 
@@ -45,7 +45,7 @@ const ItemDiliverySetting = () => {
           children={
             <Toggle
               isToggle={customDelivery}
-              onChange={onCustomDelevery}
+              onChange={onCustomDelivery}
               disabled={reserveDelivery}
             />
           }
@@ -87,4 +87,4 @@ const ItemDiliverySetting = () => {
   )
 }
 
-export default ItemDiliverySetting
+export default ItemDeliverySetting

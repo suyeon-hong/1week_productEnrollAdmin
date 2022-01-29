@@ -1,5 +1,6 @@
 import {
   CHANGE_OTHER_SETTING,
+  CHANGE_PERIOD,
   CHANGE_PRODUCTION_BENEFIT,
   CHANGE_PRODUCTION_IMAGES,
   CHANGE_PRODUCTION_INFORMATION,
@@ -24,6 +25,18 @@ export const initialValue = {
     productionCode: Date.now(),
     thumbnail: [],
     mainImages: [],
+  },
+  period: {
+    expose: {
+      type: 'false',
+      startDate: '',
+      endDate: '',
+    },
+    sell: {
+      type: 'false',
+      startDate: '',
+      endDate: '',
+    },
   },
   productionImages: {
     productionImages: [],
@@ -55,6 +68,9 @@ export const reducer = (state, { type, payload }) => {
     }
     case CHANGE_OTHER_SETTING: {
       return { ...state, otherSetting: payload }
+    }
+    case CHANGE_PERIOD: {
+      return { ...state, period: { ...state.period, ...payload } }
     }
     default: {
       throw new Error('type is inValid')

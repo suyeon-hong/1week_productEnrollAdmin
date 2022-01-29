@@ -2,32 +2,35 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TableBody, RadioButton, Calendar } from '@components/base'
 
-const SetExposurePeriodRow = ({ itemNum = false, title, items, startNum }) => {
+const SetExposurePeriodRow = ({ title, items, startNum, setPeriod }) => {
   const now = new Date()
   const firstCalender = new Date()
   const secondCalender = new Date(now.setDate(now.getDate() + 30))
 
   const [firstTime, setFirstTime] = useState(firstCalender)
   const [secondTime, setSecondTime] = useState(secondCalender)
-  const [unexposed, setUnexposed] = useState(false)
+  const [selected, setSelected] = useState(startNum)
 
   useEffect(() => {
-    if (itemNum === true) setUnexposed(true)
-    else setUnexposed(false)
-  }, [itemNum])
-
-  useEffect(() => {
-    if (secondTime.getTime() - firstTime.getTime() < 0) setUnexposed(true)
-    if (secondTime.getTime() - firstTime.getTime() > 0) setUnexposed(false)
+    if (secondTime.getTime() - firstTime.getTime() < 0) setSelected(startNum)
+    if (secondTime.getTime() - firstTime.getTime() > 0) setSelected(startNum)
   }, [firstTime, secondTime])
+
+  useEffect(() => {
+    setPeriod({
+      type: selected,
+      startDate: firstTime.getTime(),
+      endDate: secondTime.getTime(),
+    })
+  }, [firstTime, secondTime, selected])
 
   return (
     <TableBody title={title} width="80%">
       <RadioButton
         items={items}
         name={title}
-        startNum={startNum}
-        unexposed={unexposed}
+        selected={selected}
+        setSelected={setSelected}
       />
       <div style={{ display: 'table' }}>
         <Calendar time={firstTime} handleTime={setFirstTime} />
