@@ -70,13 +70,14 @@ const ItemDiliverySetting = () => {
                 onChange={onReserveDelivery}
               />
               <S.CalendarWrapper>
-                주문 시간 {<Calendar time onChange={onOrderTime} />} ~
-                {<Calendar time onChange={onExpireTime} />}
+                주문 시간{' '}
+                {<Calendar time={new Date()} handleTime={onOrderTime} />} ~
+                {<Calendar time={new Date()} handleTime={onExpireTime} />}
               </S.CalendarWrapper>
               <S.CalendarWrapper>
                 새벽 배송
-                {<Calendar onChange={onAlert} />} 일반배송
-                {<Calendar onChange={onAlert} />}
+                {<Calendar handleTime={onAlert} />} 일반배송
+                {<Calendar handleTime={onAlert} />}
               </S.CalendarWrapper>
             </>
           }

@@ -3,25 +3,26 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import * as S from './Style'
 
-const Calendar = ({ time, onChange }) => {
-  const [date, setDate] = useState(new Date())
+const Calendar = ({ time, handleTime }) => {
+  const [date, setDate] = useState(time ? time : new Date('2021-01-25 18:44'))
 
-  const onChangeHandler = (value) => {
+  const handleChange = (value) => {
     setDate(value)
-    onChange && onChange(value)
+    handleTime(value)
   }
+
   return (
     <S.DatePickerBlock>
       {time ? (
         <DateTimePicker
           value={date}
-          onChange={(value) => onChangeHandler(value)}
+          onChange={(value) => handleChange(value)}
           hour24
         />
       ) : (
         <DatePicker
           value={date}
-          onChange={(value) => onChangeHandler(value)}
+          onChange={(value) => handleChange(value)}
           hour24
         />
       )}
@@ -30,11 +31,12 @@ const Calendar = ({ time, onChange }) => {
 }
 
 Calendar.propTypes = {
-  time: PropTypes.bool,
+  time: PropTypes.object,
+  handleTime: PropTypes.func.isRequired,
 }
 
 Calendar.defaultProps = {
-  time: undefined,
+  time: null,
 }
 
 export default Calendar
