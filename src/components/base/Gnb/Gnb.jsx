@@ -31,7 +31,7 @@ const Gnb = () => {
             {name.title}
             {name.list &&
               name.list.map((li) => {
-                return <S.InnerMenu>{li}</S.InnerMenu>
+                return <S.InnerMenu key={li}>{li}</S.InnerMenu>
               })}
           </S.Menu>
         )
