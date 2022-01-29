@@ -1,6 +1,7 @@
 import { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import { useToggle } from '@hooks'
+import { AlertModal } from '@components/domain'
 import * as S from './Style'
 
 const Toggle = forwardRef(({ isToggle, disabled, onChange, ...props }, ref) => {
