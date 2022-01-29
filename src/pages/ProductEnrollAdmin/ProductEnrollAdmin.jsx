@@ -14,9 +14,14 @@ import {
   ItemInformationTable,
 } from '@components/table'
 import { Gnb, Button } from '@components/base'
-
+import { useTableState } from '../../contexts/TableContext/TableProvider'
 
 const ProductEnrollAdmin = () => {
+  const tableState = useTableState()
+  const handleClick = () => {
+    console.log(tableState)
+  }
+
   return (
     <>
       <S.Logo>Sir.LOIN</S.Logo>
@@ -33,6 +38,7 @@ const ProductEnrollAdmin = () => {
               style={{
                 transform: 'translateX(70vw)',
               }}
+              onClick={handleClick}
             >
               저장하기
             </Button>
