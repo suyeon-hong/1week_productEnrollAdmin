@@ -7,9 +7,10 @@ import {
   ProductionInformation,
   SetPeriodTable,
   RecommendImageTable,
+  ItemDeliverySetting,
+  ItemInformationTable,
 } from '@components/table'
 import { useTableState } from '../../contexts/TableContext/TableProvider'
-import { ItemDeliverySetting } from '../../components/table'
 
 const ProductEnrollAdmin = () => {
   const tableState = useTableState()
@@ -29,6 +30,7 @@ const ProductEnrollAdmin = () => {
       <ProductImageTable />
       <RecommendImageTable />
       <ItemDeliverySetting />
+      <ItemInformationTable />
       <ItemBenefitSetting />
       <OtherSetting />
     </>

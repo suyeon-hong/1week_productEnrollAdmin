@@ -6,3 +6,4 @@ export { default as ItemDeliverySetting } from './ItemDeliverySetting/ItemDelive
 export { default as ItemBenefitSetting } from './ItemBenefitSetting/ItemBenefitSetting'
 export { default as OtherSetting } from './OtherSetting/OtherSetting'
 export { default as ItemInformationTable } from './ItemInformationTable/ItemInformationTable'
+export { default as ProductionInformation } from './ProductionInformation/ProductionInformation'
