@@ -24,6 +24,7 @@ const Button = ({
       radius={radius ? 1 : 0}
       background={background}
       color={color}
+      onClick={onClick}
       style={{ ...props.style }}
       onClick={onClick}
     >

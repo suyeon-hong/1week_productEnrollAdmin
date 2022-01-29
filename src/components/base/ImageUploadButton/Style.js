@@ -10,6 +10,7 @@ export const ImageUploadButtonWrapper = styled.label`
   border-radius: 3px;
   background: #fff;
   color: ${({ theme }) => theme.color.purple};
+  cursor: pointer;
 `
 
 export const FileInput = styled.input`

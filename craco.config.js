@@ -15,6 +15,7 @@ module.exports = {
           '@pages': './src/pages',
           '@style': './src/style',
           '@utils': './src/utils',
+          '@contexts': './src/contexts',
         },
       },
     },

@@ -1,14 +1,22 @@
 import PropTypes from 'prop-types'
 import * as S from './Style'
 
-const ImageUploadButton = ({ isMultiple = true, upload }) => {
+const ImageUploadButton = ({ isImage = false, isMultiple = true, upload }) => {
   const handleChange = (e) => {
-    const addFiles = [...e.target.files].map((file) => file.name)
-    if (isMultiple) {
-      upload((files) => [...files, ...addFiles])
-      return
+    if (isImage) {
+      const imageFileInfo = e.target.files[0]
+      upload({
+        name: imageFileInfo.name,
+        src: URL.createObjectURL(imageFileInfo),
+      })
+    } else {
+      const addFiles = [...e.target.files].map((file) => file.name)
+      if (isMultiple) {
+        upload((files) => [...files, ...addFiles])
+        return
+      }
+      upload([...addFiles])
     }
-    upload([...addFiles])
   }
 
   return (
@@ -16,15 +24,16 @@ const ImageUploadButton = ({ isMultiple = true, upload }) => {
       + 이미지 첨부
       <S.FileInput
         type="file"
+        accept={isImage ? 'image/*' : '*'}
         multiple={isMultiple}
         onChange={handleChange}
-        accept={'image/*'}
       />
     </S.ImageUploadButtonWrapper>
   )
 }
 
 ImageUploadButton.propTypes = {
+  isImage: PropTypes.bool,
   isMultiple: PropTypes.bool,
   upload: PropTypes.func,
 }

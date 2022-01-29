@@ -20,19 +20,12 @@ export const TableWrapper = styled.table`
   td {
     padding-left: 5px;
   }
+
+  &.noPadding td {
+    padding-left: ${({ theme }) => theme.table.padding};
+  }
 `
 
 export const TableHead = styled.thead`
   text-align: left;
-`
-
-export const AlertText = styled.td`
-  text-align: center;
-  height: 100%;
-  background-color: ${({ theme }) => `${theme.color.border}`};
-
-  & > span {
-    position: relative;
-    bottom: 20%;
-  }
 `
