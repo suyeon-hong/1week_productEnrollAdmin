@@ -27,7 +27,7 @@ export const initialValue = {
       price: 0,
       discount: 0,
       stock: 0,
-      isVAT: true,
+      isVAT: 'true',
       VAT: 0,
     },
   ],
@@ -109,13 +109,12 @@ export const reducer = (state, { type, payload }) => {
       Object.entries(payload).forEach(([key, value]) => (current[key] = value))
 
       // @NOTE: 과세로 지정될 경우, 입력된 판매가의 10% 부과세로 저장
-      if (!!payload.isVAT) {
-        newState[+payload.optionsIndex].optionInfo[
-          payload.optionInfoIndex
-        ].VAT =
-          +newState[+payload.optionsIndex].optionInfo[payload.optionInfoIndex]
-            .price * 0.1
-      }
+      newState[+payload.optionsIndex].optionInfo[payload.optionInfoIndex].VAT =
+        newState[+payload.optionsIndex].optionInfo[payload.optionInfoIndex]
+          .isVAT === 'true'
+          ? +newState[+payload.optionsIndex].optionInfo[payload.optionInfoIndex]
+              .price * 0.1
+          : 0
 
       // @NOTE: 총 재고 수량 업데이트
       if (payload.stock) {
