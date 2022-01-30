@@ -1,18 +1,18 @@
 import React, { useContext } from 'react'
-import { OptionContext } from '@contexts/OptionContext/OptionProvider'
-import { ADD_OPTION, DELETE_OPTION_SET } from '@contexts/OptionContext/types'
+import { InformationContext } from '@contexts/InformationContext/InformationProvider'
+import { DELETE_INFORMATION_SET } from '@contexts/InformationContext/types'
 import { Button } from '@components/base'
 import { InformationRow } from '@components/rows'
 import theme from '@style/theme'
 import * as S from './Style'
 
 const InformationSetRow = () => {
-  const { options, dispatch } = useContext(OptionContext)
+  const { informations, dispatch } = useContext(InformationContext)
 
   const handleDeleteOptionSet = (e) => {
     const { index } = e.target.closest('div > div').dataset
     dispatch({
-      type: DELETE_OPTION_SET,
+      type: DELETE_INFORMATION_SET,
       payload: index,
     })
   }
@@ -20,11 +20,14 @@ const InformationSetRow = () => {
   return (
     <S.InformationSetRowWrapper>
       {React.Children.toArray(
-        options.map(({ optionInfo, additoryOptions }, index) => (
-          <S.InformationSetRowContainer data-index={index} id="date-set`${}">
+        informations?.map((infomation) => (
+          <S.InformationSetRowContainer
+            data-index={infomation.index}
+            id="date-set`${}"
+          >
             <S.Title>
               <p style={({ fontSize: '110%' }, { fontWeight: 'bold' })}>
-                정보고시 {index + 1}
+                정보고시 {infomation.index + 1}
               </p>
               <Button
                 width={60}
@@ -36,11 +39,10 @@ const InformationSetRow = () => {
                 삭제
               </Button>
             </S.Title>
-
             <InformationRow
-              optionInfo={optionInfo}
-              additoryOptions={additoryOptions}
-              optionsIndex={index}
+              infomation={infomation}
+              additoryInfos={infomation.additoryInfos}
+              parentIndex={infomation.index}
             />
           </S.InformationSetRowContainer>
         )),

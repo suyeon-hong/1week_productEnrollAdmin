@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from 'react'
+import { createContext, useReducer } from 'react'
 import { initialValue, reducer } from './reducer'
 
 const OptionContext = createContext(initialValue)
