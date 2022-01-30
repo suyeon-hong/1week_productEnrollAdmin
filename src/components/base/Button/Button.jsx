@@ -6,6 +6,7 @@ import * as S from './Style'
 // NOTE: color = 폰트 컬러, radius = border-radius, background = background-color
 
 const Button = ({
+  type,
   width,
   height,
   border,
@@ -18,6 +19,7 @@ const Button = ({
 }) => {
   return (
     <S.ButtonWrapper
+      type={type}
       width={width}
       height={height}
       border={border}
@@ -34,6 +36,7 @@ const Button = ({
 }
 
 Button.propTypes = {
+  type: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   border: PropTypes.string,
@@ -44,6 +47,7 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
+  type: 'button',
   width: '100%',
   height: '100%',
   radius: true,
