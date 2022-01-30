@@ -2,8 +2,8 @@ import { useEffect, useContext } from 'react'
 import { OptionContext } from '@contexts/OptionContext/OptionProvider'
 import { ADD_INFORMATION_SET } from '@contexts/OptionContext/types'
 import { initialValue } from '@contexts/OptionContext/reducer'
-import { OptionSetRow, InformationSetRow } from '@components/rows'
-import { Table, Button, Box } from '@components/base'
+import { InformationSetRow } from '@components/rows'
+import { Table, Button } from '@components/base'
 import theme from '@style/theme'
 import * as S from './Style'
 
@@ -15,13 +15,8 @@ const ItemInformationTable = () => {
   }, [])
 
   const AddInformationSet = () => {
-    console.log('addInformation')
     dispatch({ type: ADD_INFORMATION_SET, payload: initialValue })
   }
-
-  useEffect(() => {
-    console.log(options, 'options')
-  }, [options])
 
   return (
     <>

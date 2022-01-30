@@ -4,7 +4,7 @@ import * as S from './Style'
 const TableBody = ({ title, width, height, children }) => {
   return (
     <S.TableBodyRow height={height}>
-      <S.TableBodyHead>{title}</S.TableBodyHead>
+      <S.TableBodyHead width={80}>{title}</S.TableBodyHead>
       <S.TableBodyContent width={width}>{children}</S.TableBodyContent>
     </S.TableBodyRow>
   )

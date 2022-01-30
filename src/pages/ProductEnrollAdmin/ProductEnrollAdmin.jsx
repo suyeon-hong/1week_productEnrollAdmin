@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import * as S from './style'
 import theme from '../../style/theme'
 
@@ -13,13 +13,29 @@ import {
   ItemDeliverySetting,
   ItemInformationTable,
 } from '@components/table'
-import { Gnb, Button } from '@components/base'
-import { useTableState } from '../../contexts/TableContext/TableProvider'
+import { Modal, Gnb, Button } from '@components/base'
+import { checkValidation } from '@utils/functions'
+import { useTableState } from '@contexts/TableContext/TableProvider'
+import { OptionContext } from '@contexts/OptionContext/OptionProvider'
+import { useModal } from '@hooks'
+import SaveModal from '@components/domain/SaveModal/SaveModal'
 
 const ProductEnrollAdmin = () => {
   const tableState = useTableState()
-  const handleClick = () => {
-    console.log(tableState)
+  const { options } = useContext(OptionContext)
+  const { isShowing, toggle } = useModal()
+  const [modalContents, setModalContents] = useState('')
+
+  const handleClick = (e) => {
+    const { productionInformation } = tableState
+    if (checkValidation(productionInformation, options[0].optionInfo[0])) {
+      setModalContents('저장되었습니다!')
+    } else {
+      setModalContents('필수값을 입력해주세요!')
+    }
+    toggle(e)
+    console.log(productionInformation)
+    console.log(options)
   }
 
   return (
@@ -56,6 +72,9 @@ const ProductEnrollAdmin = () => {
           </S.Form>
         </S.FormWrapper>
       </S.PageWrapper>
+      <Modal isShowing={isShowing} close={toggle}>
+        <SaveModal close={toggle} children={modalContents} />
+      </Modal>
     </>
   )
 }

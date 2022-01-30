@@ -1,8 +1,8 @@
 import { Table } from '@components/base'
 import { SetExposurePeriodRow } from '@components/rows'
 import * as F from './radioItems'
-import { useTableDispatch } from '../../../contexts/TableContext/TableProvider'
-import { CHANGE_PERIOD } from '../../../contexts/TableContext/types'
+import { useTableDispatch } from '@contexts/TableContext/TableProvider'
+import { CHANGE_PERIOD } from '@contexts/TableContext/types'
 
 const SetPeriodTable = () => {
   const dispatch = useTableDispatch()

@@ -9,7 +9,7 @@ export const ProductionCode = styled.div`
   position: absolute;
   top: 50%;
   right: 0;
-  margin-top: -55px;
+  margin-top: -51px;
 
   > * {
     display: flex;
@@ -19,8 +19,10 @@ export const ProductionCode = styled.div`
 `
 export const Head = styled.div`
   width: 150px;
-  height: 110px;
+  height: 101px;
   border-right: 1px solid ${({ theme }) => `${theme.color.border}`};
+  border-top: 1px solid ${({ theme }) => `${theme.color.border}`};
+  border-bottom: 1px solid ${({ theme }) => `${theme.color.border}`};
   background-color: ${({ theme }) => theme.color.tHead};
 `
 export const Contents = styled.div`
