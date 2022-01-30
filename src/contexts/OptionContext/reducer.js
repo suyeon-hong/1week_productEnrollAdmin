@@ -1,4 +1,8 @@
-import { deepCopy, increaseIndexByOne } from '@utils/functions'
+import {
+  deepCopy,
+  increaseIndexByOne,
+  getArrangedIndexArray,
+} from '@utils/functions'
 import {
   ADD_OPTION_SET,
   DELETE_OPTION_SET,
@@ -90,7 +94,12 @@ export const reducer = (state, { type, payload }) => {
     case DELETE_OPTION: {
       const { optionsIndex, deletedOptionInfo } = payload
       const newState = deepCopy(state)
-      newState[+optionsIndex].optionInfo = deletedOptionInfo
+
+      // @NOTE: 삭제하면 map에서 data-index를 다시 재조정해서 넣음(0, 1, 2...)
+      // @NOTE: 그러므로 기존 additoryInfo의 index들도 재조정해주는 작업 추가
+      const arrangedDeletedIoptionInfo =
+        getArrangedIndexArray(deletedOptionInfo)
+      newState[+optionsIndex].optionInfo = arrangedDeletedIoptionInfo
       return newState
     }
     case UPDATE_OPTION_INFO: {
@@ -155,6 +164,7 @@ export const reducer = (state, { type, payload }) => {
         additoryOptionsArrayElement.filter(
           (element) => element.index !== currentIndex,
         )
+
       newState[+payload.optionsIndex].additoryOptions[optionInfoIndex] =
         deleteAdditoryOptionsArrayElement
 

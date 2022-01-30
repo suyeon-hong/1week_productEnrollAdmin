@@ -26,7 +26,17 @@ export const calculateDiscount = (normalPrice, price) => {
   return Math.floor(((+normalPrice - +price) / +normalPrice) * 100)
 }
 
-export const checkValidation = (productionInformation, optionInfo) => {
+export const getArrangedIndexArray = (array) =>
+  array.map((element, newIndex) => ({
+    ...element,
+    index: newIndex,
+  }))
+
+export const checkValidation = (
+  productionInformation,
+  optionInfo,
+  informations,
+) => {
   const { categories, productionName, productionDescribe } =
     productionInformation
   if (!Object.values(categories).some(({ checked }) => checked)) {
@@ -42,19 +52,19 @@ export const checkValidation = (productionInformation, optionInfo) => {
     return false
   }
 
-  if (!optionInfo.optionName.length) {
+  if (!optionInfo?.optionName.length) {
     console.log('옵션 이름')
     return false
   }
-  if (!optionInfo.normalPrice) {
+  if (!optionInfo?.normalPrice) {
     console.log('가격')
     return false
   }
-  if (!optionInfo.price) {
+  if (!optionInfo?.price) {
     console.log('판매가')
     return false
   }
-  if (!optionInfo.stock) {
+  if (!optionInfo?.stock) {
     console.log('옵션 재고')
     return false
   }

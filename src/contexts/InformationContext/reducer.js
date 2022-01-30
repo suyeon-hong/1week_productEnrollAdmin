@@ -69,7 +69,7 @@ export const reducer = (state, { type, payload }) => {
       )
 
       // @NOTE: 삭제하면 map에서 data-index를 다시 재조정해서 넣음(0, 1, 2...)
-      // @NOTE: 그러므로 기존 additoryInfo의 index들도 재조정해주는 작업
+      // @NOTE: 그러므로 기존 additoryInfo의 index들도 재조정해주는 작업 추가
       const arrangedIndexAdditoryInfos = getArrangedIndexArray(
         filteredAdditoryInfos,
       )
