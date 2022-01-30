@@ -1,18 +1,14 @@
-import { useEffect, useContext } from 'react'
-import { OptionContext } from '@contexts/OptionContext/OptionProvider'
-import { ADD_INFORMATION_SET } from '@contexts/OptionContext/types'
-import { initialValue } from '@contexts/OptionContext/reducer'
+import { useContext } from 'react'
+import { InformationContext } from '@contexts/InformationContext/InformationProvider'
+import { ADD_INFORMATION_SET } from '@contexts/InformationContext/types'
+import { initialValue } from '@contexts/InformationContext/reducer'
 import { InformationSetRow } from '@components/rows'
 import { Table, Button } from '@components/base'
 import theme from '@style/theme'
 import * as S from './Style'
 
 const ItemInformationTable = () => {
-  const { options, dispatch } = useContext(OptionContext)
-
-  useEffect(() => {
-    dispatch({ type: ADD_INFORMATION_SET, payload: initialValue })
-  }, [])
+  const { informations, dispatch } = useContext(InformationContext)
 
   const AddInformationSet = () => {
     dispatch({ type: ADD_INFORMATION_SET, payload: initialValue })
@@ -21,7 +17,7 @@ const ItemInformationTable = () => {
   return (
     <>
       <Table thead="상품 정보 고시" className="noPadding">
-        {options?.length > 0 ? (
+        {informations?.length > 0 ? (
           <InformationSetRow />
         ) : (
           <S.AlertText className="alertText">
@@ -29,7 +25,6 @@ const ItemInformationTable = () => {
           </S.AlertText>
         )}
         <Button
-          width={'100%'}
           color={theme.color.purple}
           height={theme.table.baseHeight}
           onClick={AddInformationSet}
