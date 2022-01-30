@@ -78,6 +78,7 @@ $ yarn start
       ],
     }
     ```
+  - `상품 정보고시 테이블(ItemInformationTable)` context 분리, 및 리팩토링
 
 - ### 유제호
 
