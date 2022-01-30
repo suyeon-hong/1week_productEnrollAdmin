@@ -13,7 +13,6 @@ import {
   ADD_ADDITORY_OPTION,
   UPDATE_ADDITORY_OPTION,
   DELETE_ADDITORY_OPTION,
-  ADD_INFORMATION_SET,
 } from './types'
 
 export const initialValue = {
@@ -69,9 +68,6 @@ export const additoryOptionsKey = {
 export const reducer = (state, { type, payload }) => {
   switch (type) {
     case ADD_OPTION_SET: {
-      return [...state, { ...payload, index: increaseIndexByOne(state) }]
-    }
-    case ADD_INFORMATION_SET: {
       return [...state, { ...payload, index: increaseIndexByOne(state) }]
     }
     case DELETE_OPTION_SET: {
