@@ -29,7 +29,6 @@ const AddInformationRow = ({ additoryInfos, parentIndex }) => {
         <Input
           width="30%"
           placeholder="항목 제목 자유 입력"
-          required
           style={{ marginRight: theme.table.innerPadding }}
         />
         <S.Inline style={{ marginRight: theme.table.padding, flexGrow: 1 }}>
