@@ -19,14 +19,14 @@ export const Logo = styled.h1`
   z-index: 2;
 `
 
-export const FormWrapper = styled.div`
+export const FormWrapper = styled.form`
   width: 100%;
   position: relative;
   padding-left: 15vw;
   padding-top: 100px;
 `
 
-export const Form = styled.form`
+export const Form = styled.div`
   width: 100%;
   padding: ${({ theme }) => theme.table.padding};
 `

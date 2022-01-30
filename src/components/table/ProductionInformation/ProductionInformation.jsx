@@ -1,15 +1,15 @@
-import { Input, Table, TableBody } from '../../base'
+import { Input, Table, TableBody } from '@components/base'
 import { CategoryRow, TagRow } from '@components/rows'
 import { ImageContainer } from '@components/domain'
 
-import * as S from './Style'
 import {
   useTableDispatch,
   useTableState,
-} from '../../../contexts/TableContext/TableProvider'
-import { CHANGE_PRODUCTION_INFORMATION } from '../../../contexts/TableContext/types'
+} from '@contexts/TableContext/TableProvider'
+import { CHANGE_PRODUCTION_INFORMATION } from '@contexts/TableContext/types'
 import { useContext, useEffect, useState } from 'react'
-import { OptionContext } from '../../../contexts/OptionContext/OptionProvider'
+import { OptionContext } from '@contexts/OptionContext/OptionProvider'
+import * as S from './Style'
 
 const ProductionInformation = ({}) => {
   const { productionInformation } = useTableState()

@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
-import * as S from './style'
-import theme from '../../style/theme'
-
+import * as S from './Style'
+import theme from '@style/theme'
 import {
   ItemBenefitSetting,
   OtherSetting,
@@ -14,11 +13,11 @@ import {
   ItemInformationTable,
 } from '@components/table'
 import { Modal, Gnb, Button } from '@components/base'
+import { SaveModal } from '@components/domain'
 import { checkValidation } from '@utils/functions'
 import { useTableState } from '@contexts/TableContext/TableProvider'
 import { OptionContext } from '@contexts/OptionContext/OptionProvider'
 import { useModal } from '@hooks'
-import SaveModal from '@components/domain/SaveModal/SaveModal'
 
 const ProductEnrollAdmin = () => {
   const tableState = useTableState()
@@ -30,12 +29,12 @@ const ProductEnrollAdmin = () => {
     const { productionInformation } = tableState
     if (checkValidation(productionInformation, options[0].optionInfo[0])) {
       setModalContents('저장되었습니다!')
+      console.log(productionInformation)
+      console.log(options)
     } else {
       setModalContents('필수값을 입력해주세요!')
     }
     toggle(e)
-    console.log(productionInformation)
-    console.log(options)
   }
 
   return (
