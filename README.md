@@ -1,11 +1,10 @@
-# 목표는 취업이조
-### - 상품 등록 페이지
-## 🚀 정보
+# 상품 등록 페이지
+👉 [배포주소 바로가기](https://goalisemployment.s3.ap-northeast-2.amazonaws.com/index.html)<br>
+👉 [회고록 바로가기](https://velog.io/@suyeon-hong/%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EC%9D%BC%EC%A3%BC%EC%9D%BC%EA%B0%84%EC%9D%98-%ED%9A%8C%EA%B3%A0.-%EC%83%9D%EA%B0%81)
 
-- [배포주소 바로가기](https://goalisemployment.s3.ap-northeast-2.amazonaws.com/index.html)
-- [노션 바로가기](https://sleepy-oxygen-343.notion.site/41970b5fee2d45aebd7b01de061039eb)
+<br>
 
-## 🧐 프로젝트 빌드 및 실행 방법
+### 🧐 프로젝트 빌드 및 실행 방법
 
 1. 상단 `Code` 버튼을 눌러 레포지토리를 클론 받습니다.
 
@@ -25,27 +24,24 @@ $ yarn install
 $ yarn start
 ```
 
-## 📋 구현목록
+### 📋 구현목록
 
-- ### 김지영
-
+### ✔ 김지영
   - `상품 옵션 테이블(OptionTable)` 구현
   - `상품 정보고시 테이블(ItemInformationTable)` context 분리, 및 리팩토링
 
-- ### 유제호
-
+### ✔ 유제호
   - `상품 기본 정보 테이블(ProductionInformation)` 구현
   - 전반적인 전역 상태관리
   - 태그 검색시 디바운스 적용
   - aws S3 배포
 
-- ### 고병표
-
+### ✔ 고병표
   - `노출 및 판매 기간 테이블(SetPeriodTable)` 구현
   - `상품 정보고시 테이블(ItemInformationTable)` 구현
   - `상품 소개, 구매자 추천 테이블(ProductImageTable, RecommendImageTable)` 구현
 
-- ### 홍수연
+### ✔ 홍수연
   - `Calendar` 컴포넌트 구현
   - `상품 배송 설정(ItemDiliverySetting)` 구현
     - 사용자 배송일 혹은 방문수령 토글버튼 활성화 시, 선 주문 예약 배송 토글버튼 비활성화
@@ -58,7 +54,7 @@ $ yarn start
 <br>
 <br>
 
-## 📈 디렉토리 구조
+### 📈 디렉토리 구조
 
 ```
 .
